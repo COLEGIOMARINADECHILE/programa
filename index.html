@@ -8,6 +8,7 @@
   <meta name="description" content="Programa de la ceremonia de licenciatura de la generación 2026 del Colegio Marina de Chile. Lunes 23 de noviembre, 10:30 horas.">
   <link rel="icon" href="img/logo.webp">
   <link rel="preload" as="image" href="img/logo.webp">
+  <link rel="preload" as="image" href="img/teatro-exterior.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100,400;100,500;100,600;125,300;125,400&display=swap" rel="stylesheet">
@@ -22,27 +23,18 @@
 
   <!-- ================= PRESENTACIÓN AUTOMÁTICA ================= -->
   <div class="cine" id="cine" aria-hidden="true">
-    <div class="cine__white"></div>
+    <div class="cine__white" id="cineWhite"></div>
 
-    <div class="cine__shot"><img src="img/teatro-exterior.jpg" alt=""></div>
-    <div class="cine__shot"><img src="img/teatro-hall.jpg" alt=""></div>
-    <div class="cine__shot cine__shot--tall"><img src="img/teatro-sala.jpg" alt=""></div>
-    <div class="cine__vignette"></div>
+    <div class="shot" data-src="img/teatro-exterior.jpg" data-w="1400" data-h="788"></div>
+    <div class="shot" data-src="img/teatro-hall.jpg" data-w="1200" data-h="800"></div>
+    <div class="shot" data-src="img/teatro-sala.jpg" data-w="1000" data-h="1500"></div>
 
-    <div class="cine__title">
-      <div class="cine__crest"><img src="img/logo.webp" alt=""></div>
-      <div class="cine__words">
-        <p class="cine__line cine__line--1">Licenciatura</p>
-        <p class="cine__line cine__line--2">Generación 2026</p>
-        <p class="cine__line cine__line--3">Lunes 23 de noviembre, 10:30 horas</p>
-      </div>
-      <div class="sparks">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-      </div>
-    </div>
+    <div class="cine__vignette" id="cineVig"></div>
 
-    <div class="cine__dark"></div>
-    <div class="cine__bar"><span></span></div>
+    <div class="cine__crest" id="cineCrest"><img src="img/logo.webp" alt=""></div>
+
+    <div class="cine__dark" id="cineDark"></div>
+    <div class="cine__bar"><span id="cineBar"></span></div>
   </div>
   <button class="skip" id="skip" type="button">Saltar presentación</button>
 
@@ -50,17 +42,25 @@
   <header class="top" id="inicio">
     <div class="top__bg" aria-hidden="true"><img src="img/teatro-sala.jpg" alt=""></div>
     <div class="top__inner">
-      <div class="crest crest--top"><img src="img/logo.webp" alt="Insignia del Colegio Marina de Chile, 70 años, Concepción 1956" width="1830" height="1774"></div>
-      <h1 class="top__title"><span class="enter" style="--i:1">Licenciatura</span> <span class="top__sub enter" style="--i:2">Generación 2026</span></h1>
-      <p class="top__date enter" style="--i:3">Lunes 23 de noviembre, 10:30 horas</p>
+      <div class="crest crest--top enter" style="--i:0"><img src="img/logo.webp" alt="Insignia del Colegio Marina de Chile, 70 años, Concepción 1956" width="1830" height="1774"></div>
+      <h1 class="top__title">
+        <span class="top__pre enter" style="--i:1">Bienvenidos a la</span>
+        <span class="enter" style="--i:2">Licenciatura</span>
+        <span class="top__sub enter" style="--i:3">Generación 2026</span>
+      </h1>
+      <p class="top__date enter" style="--i:4">Lunes 23 de noviembre, 10:30 horas</p>
     </div>
+    <a class="hint enter" style="--i:6" href="#palabras">
+      <span>Desliza hacia abajo para ver todo</span>
+      <svg class="hint__arrow" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </header>
 
   <main>
-    <section class="welcome" aria-labelledby="bienvenida">
+    <section class="welcome" id="palabras" aria-labelledby="bienvenida">
       <div class="wrap">
-        <div class="welcome__card enter" style="--i:4">
-          <h2 id="bienvenida">Bienvenidos</h2>
+        <div class="welcome__card reveal">
+          <h2 id="bienvenida">Palabras de bienvenida</h2>
           <p>Hoy despedimos a la generación 2026, en el año en que nuestro colegio cumple setenta años formando personas en Concepción.</p>
           <p>Los recibimos con orgullo y gratitud, junto a sus familias y profesores, para celebrar el camino recorrido y el rumbo que comienza.</p>
         </div>
@@ -69,27 +69,22 @@
 
     <section class="program" aria-labelledby="programa">
       <div class="wrap">
-        <h2 id="programa" class="program__title enter" style="--i:5">Programa</h2>
+        <h2 id="programa" class="program__title reveal">Programa</h2>
         <ol class="steps">
-          <li class="step enter" style="--i:6"><span class="step__n">1</span><span class="step__t">Entrada estudiantes generación 2026</span></li>
-          <li class="step enter" style="--i:7"><span class="step__n">2</span><span class="step__t">Himno Nacional</span></li>
-          <li class="step enter" style="--i:8"><span class="step__n">3</span><span class="step__t">Palabras de la Directora</span></li>
-          <li class="step step--key enter" style="--i:9"><span class="step__n">4</span><span class="step__t">Entrega de licencias 4° Medio A</span></li>
-          <li class="step enter" style="--i:10"><span class="step__n">5</span><span class="step__t">Número artístico</span></li>
-          <li class="step step--key enter" style="--i:11"><span class="step__n">6</span><span class="step__t">Entrega de licencias 4° Medio B</span></li>
-          <li class="step enter" style="--i:12"><span class="step__n">7</span><span class="step__t">Presentación de video</span></li>
-          <li class="step step--key enter" style="--i:13"><span class="step__n">8</span><span class="step__t">Entrega de licencias 4° Medio C</span></li>
-          <li class="step enter" style="--i:14"><span class="step__n">9</span><span class="step__t">Palabras estudiante generación 2026</span></li>
-          <li class="step enter" style="--i:15"><span class="step__n">10</span><span class="step__t">Premiación estudiantes destacados</span></li>
-          <li class="step enter" style="--i:16"><span class="step__n">11</span><span class="step__t">Himno del colegio</span></li>
-          <li class="step step--light enter" style="--i:17"><span class="step__n">12</span><span class="step__t">Ceremonia de la Luz</span></li>
-          <li class="step enter" style="--i:18"><span class="step__n">13</span><span class="step__t">Canción del adiós</span></li>
+          <li class="step reveal"><span class="step__n">1</span><span class="step__t">Entrada estudiantes generación 2026</span></li>
+          <li class="step reveal"><span class="step__n">2</span><span class="step__t">Himno Nacional</span></li>
+          <li class="step reveal"><span class="step__n">3</span><span class="step__t">Palabras de la Directora</span></li>
+          <li class="step step--key reveal"><span class="step__n">4</span><span class="step__t">Entrega de licencias 4° Medio A</span></li>
+          <li class="step reveal"><span class="step__n">5</span><span class="step__t">Número artístico</span></li>
+          <li class="step step--key reveal"><span class="step__n">6</span><span class="step__t">Entrega de licencias 4° Medio B</span></li>
+          <li class="step reveal"><span class="step__n">7</span><span class="step__t">Presentación de video</span></li>
+          <li class="step step--key reveal"><span class="step__n">8</span><span class="step__t">Entrega de licencias 4° Medio C</span></li>
+          <li class="step reveal"><span class="step__n">9</span><span class="step__t">Palabras estudiante generación 2026</span></li>
+          <li class="step reveal"><span class="step__n">10</span><span class="step__t">Premiación estudiantes destacados</span></li>
+          <li class="step reveal"><span class="step__n">11</span><span class="step__t">Himno del colegio</span></li>
+          <li class="step step--light reveal"><span class="step__n">12</span><span class="step__t">Ceremonia de la Luz</span></li>
+          <li class="step reveal"><span class="step__n">13</span><span class="step__t">Canción del adiós</span></li>
         </ol>
-
-        <a class="more enter" style="--i:19" href="#despedida">
-          <span>Desliza para ver las palabras de despedida</span>
-          <svg class="more__arrow" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </div>
     </section>
 
@@ -111,72 +106,132 @@
     <p class="foot__meta">Lunes 23 de noviembre, 10:30 horas</p>
     <div class="foot__actions">
       <button class="btn btn--primary" id="replay" type="button">Ver la presentación otra vez</button>
-      <a class="btn" href="#inicio">Volver al programa</a>
+      <a class="btn" href="#inicio">Volver al inicio</a>
     </div>
   </footer>
 
   <script>
   (function () {
     var root = document.documentElement;
-    var cine = document.getElementById('cine');
+    var playing = root.classList.contains('js');
+
+    // ---------- Aparición al deslizar ----------
+    var rev = document.querySelectorAll('.reveal');
+    if (playing && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+      rev.forEach(function (el) { io.observe(el); });
+    } else {
+      rev.forEach(function (el) { el.classList.add('is-in'); });
+    }
+
+    if (!playing) { root.classList.add('is-done'); return; }
+
+    // ---------- Presentación con cámara ----------
+    var white = document.getElementById('cineWhite');
+    var crest = document.getElementById('cineCrest');
+    var vig = document.getElementById('cineVig');
+    var dark = document.getElementById('cineDark');
+    var bar = document.getElementById('cineBar');
     var skip = document.getElementById('skip');
     var replay = document.getElementById('replay');
-    var timers = [];
 
-    // Línea de tiempo (milisegundos)
-    var timeline = [
-      [100,   'sc-logo'],   // aparece el logo sobre blanco
-      [3400,  'sc-title'],  // el logo se aleja, llega la noche y el título
-      [8200,  'sc-1'],      // la cámara se acerca al teatro
-      [12000, 'sc-2'],      // entra al interior
-      [15800, 'sc-3'],      // llega a la sala
-      [19600, 'sc-end']     // fundido a la noche
+    // Cada toma: cuándo empieza y termina (segundos), desde qué distancia parte,
+    // cuánto se acerca y hacia qué punto de la foto avanza la cámara.
+    var plan = [
+      { t0: 3.6,  t1: 10.6, in: 1.4, out: 1.1, from: 0.32, to: 2.3, fx: 0.6,  fy: 0.7 },  // fachada
+      { t0: 9.5,  t1: 16.2, in: 1.1, out: 1.1, from: 1.0,  to: 2.1, fx: 0.5,  fy: 0.6 },  // interior
+      { t0: 15.1, t1: 21.4, in: 1.1, out: 1.2, from: 0.95, to: 1.7, fx: 0.5,  fy: 0.62 }  // sala
     ];
-    var total = 20800;
+    var TOTAL = 21.8;
 
-    function clear() { timers.forEach(clearTimeout); timers = []; }
+    var shots = Array.prototype.slice.call(document.querySelectorAll('.shot')).map(function (el, i) {
+      var w = +el.dataset.w, h = +el.dataset.h;
+      var back = new Image(); back.src = el.dataset.src; back.alt = ''; back.className = 'shot__back';
+      var img = new Image(); img.src = el.dataset.src; img.alt = ''; img.className = 'shot__img';
+      img.style.width = w + 'px'; img.style.height = h + 'px';
+      el.appendChild(back); el.appendChild(img);
+      return { el: el, img: img, w: w, h: h, p: plan[i] };
+    });
+
+    var clamp = function (v) { return Math.max(0, Math.min(1, v)); };
+    var seg = function (t, a, b) { return clamp((t - a) / (b - a)); };
+    var smooth = function (x) { return x * x * (3 - 2 * x); };
+    var easeOut = function (x) { return 1 - Math.pow(1 - x, 3); };
+    var easeIn = function (x) { return x * x * x; };
+
+    var start = 0, raf = 0;
+
+    function frame(now) {
+      if (!start) start = now;
+      var t = (now - start) / 1000;
+      render(t);
+      if (t >= TOTAL) { finish(); return; }
+      raf = requestAnimationFrame(frame);
+    }
+
+    function render(t) {
+      var vw = window.innerWidth, vh = window.innerHeight;
+
+      // 1. El logo aparece sobre blanco y luego se aleja en la distancia
+      var appear = easeOut(seg(t, 0.2, 1.8));
+      var away = easeIn(seg(t, 3.0, 5.4));
+      var cs = (0.82 + 0.18 * appear) * (1 - 0.96 * away);
+      crest.style.transform = 'translate(-50%, -50%) scale(' + cs.toFixed(4) + ')';
+      crest.style.opacity = (appear * (1 - seg(t, 4.6, 5.4))).toFixed(3);
+      if (t > 1.6 && !crest.classList.contains('is-shine')) crest.classList.add('is-shine');
+      white.style.opacity = (1 - smooth(seg(t, 3.0, 4.6))).toFixed(3);
+
+      // 2. La cámara avanza hacia el teatro, entra y llega a la sala
+      shots.forEach(function (s) {
+        var P = s.p;
+        if (t < P.t0 - 0.05 || t > P.t1 + 0.05) { s.el.style.opacity = 0; return; }
+        var p = seg(t, P.t0, P.t1);
+        var pe = 0.55 * p + 0.45 * p * p;                // avanza y acelera al final
+        var contain = Math.min(vw / s.w, vh / s.h);
+        var cover = Math.max(vw / s.w, vh / s.h);
+        var s0 = contain * P.from, s1 = cover * P.to;
+        var sc = s0 * Math.pow(s1 / s0, pe);
+        var k = smooth(p);
+        var tx = (1 - k) * (vw - sc * s.w) / 2 + k * (vw / 2 - sc * P.fx * s.w);
+        var ty = (1 - k) * (vh - sc * s.h) / 2 + k * (vh / 2 - sc * P.fy * s.h);
+        if (sc * s.w >= vw) tx = Math.min(0, Math.max(vw - sc * s.w, tx));
+        if (sc * s.h >= vh) ty = Math.min(0, Math.max(vh - sc * s.h, ty));
+        s.img.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0) scale(' + sc.toFixed(5) + ')';
+        var o = smooth(seg(t, P.t0, P.t0 + P.in)) * (1 - smooth(seg(t, P.t1 - P.out, P.t1)));
+        s.el.style.opacity = o.toFixed(3);
+      });
+      vig.style.opacity = seg(t, 4, 5.5).toFixed(3);
+
+      // 3. Fundido final hacia la bienvenida
+      dark.style.opacity = smooth(seg(t, 20.6, 21.6)).toFixed(3);
+      bar.style.transform = 'scaleX(' + clamp(t / TOTAL).toFixed(4) + ')';
+    }
+
+    // Para revisar un instante exacto: cineAt(segundos)
+    window.cineAt = function (t) { cancelAnimationFrame(raf); render(t); };
 
     function finish() {
-      clear();
+      cancelAnimationFrame(raf);
       root.classList.remove('is-playing');
       root.classList.add('is-done');
       window.scrollTo(0, 0);
     }
 
     function play() {
-      clear();
-      cine.className = 'cine';
+      cancelAnimationFrame(raf);
+      crest.classList.remove('is-shine');
       root.classList.remove('is-done');
       root.classList.add('is-playing');
       window.scrollTo(0, 0);
-      void cine.offsetWidth; // reinicia las animaciones
-      timeline.forEach(function (step) {
-        timers.push(setTimeout(function () { cine.classList.add(step[1]); }, step[0]));
-      });
-      timers.push(setTimeout(finish, total));
+      start = 0;
+      raf = requestAnimationFrame(frame);
     }
 
     skip.addEventListener('click', finish);
-    replay.addEventListener('click', function () {
-      if (root.classList.contains('js')) { play(); } else { window.scrollTo(0, 0); }
-    });
-
-    if (root.classList.contains('js')) {
-      play();
-    } else {
-      root.classList.add('is-done');
-    }
-
-    // Despedida aparece al deslizar
-    var rev = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('is-in'); });
-      }, { threshold: 0.25 });
-      rev.forEach(function (el) { io.observe(el); });
-    } else {
-      rev.forEach(function (el) { el.classList.add('is-in'); });
-    }
+    replay.addEventListener('click', play);
+    play();
   })();
   </script>
 </body>
