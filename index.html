@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="js is-playing">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -7,89 +7,109 @@
   <title>Licenciatura Generación 2026 - Colegio Marina de Chile</title>
   <meta name="description" content="Programa de la ceremonia de licenciatura de la generación 2026 del Colegio Marina de Chile. Lunes 23 de noviembre, 10:30 horas.">
   <link rel="icon" href="img/logo.webp">
+  <link rel="apple-touch-icon" href="img/logo.webp">
   <link rel="preload" as="image" href="img/logo.webp">
-  <link rel="preload" as="image" href="img/teatro-exterior.jpg">
+  <link rel="preload" as="image" href="img/video-fachada.jpg">
+  <link rel="preload" as="image" href="img/video-entrada.jpg">
+  <link rel="preload" as="image" href="img/video-sala.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100,400;100,500;100,600;125,300;125,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script>
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.documentElement.classList.add('js', 'is-playing');
-    }
-  </script>
+  <noscript><style>.cine, .skip { display: none !important; } .enter, .reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
 
+  <!-- Íconos del programa -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3.128a4 4 0 0 1 0 7.744M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></g></symbol>
+      <symbol id="i-flag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"/></symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M12 19v3m7-12v2a7 7 0 0 1-14 0v-2"/><rect width="6" height="13" x="9" y="2" rx="3"/></g></symbol>
+      <symbol id="i-cap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0zM22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></g></symbol>
+      <symbol id="i-music" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></g></symbol>
+      <symbol id="i-video" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="m12.296 3.464l3.02 3.956M20.2 6L3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3zM3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm3.18-5.724l3.1 3.899"/></symbol>
+      <symbol id="i-vocal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="m11 7.601l-5.994 8.19a1 1 0 0 0 .1 1.298l.817.818a1 1 0 0 0 1.314.087L15.09 12"/><path d="M16.5 21.174C15.5 20.5 14.372 20 13 20c-2.058 0-3.928 2.356-6 2s-2.775-3.369-1.5-4.5"/><circle cx="16" cy="7" r="5"/></g></symbol>
+      <symbol id="i-trophy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M10 14.66V17a1 1 0 0 1-1 1a2 2 0 0 0-2 2v2m7-7.34V17a1 1 0 0 0 1 1a2 2 0 0 1 2 2v2m.916-12H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3M4 22h16"/><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"/><path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3"/></g></symbol>
+      <symbol id="i-anchor" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M12 6v16m7-9l2-1a9 9 0 0 1-18 0l2 1m4-2h6"/><circle cx="12" cy="4" r="2"/></g></symbol>
+      <symbol id="i-flame" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0a5 5 0 0 1 1-3a1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></symbol>
+      <symbol id="i-hand" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2m0 4V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2m0 4.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></g></symbol>
+    </defs>
+  </svg>
+
   <!-- ================= PRESENTACIÓN AUTOMÁTICA ================= -->
-  <div class="cine" id="cine" aria-hidden="true">
+  <div class="cine" id="cine" aria-live="polite">
     <div class="cine__white" id="cineWhite"></div>
 
-    <div class="shot" data-src="img/teatro-exterior.jpg" data-w="1400" data-h="788"></div>
-    <div class="shot" data-src="img/teatro-hall.jpg" data-w="1200" data-h="800"></div>
-    <div class="shot" data-src="img/teatro-sala.jpg" data-w="1000" data-h="1500"></div>
+    <div class="shot" data-src="img/video-fachada.jpg" data-w="1280" data-h="720"></div>
+    <div class="shot" data-src="img/video-entrada.jpg" data-w="1280" data-h="720"></div>
+    <div class="shot" data-src="img/video-sala.jpg" data-w="1280" data-h="720"></div>
 
     <div class="cine__vignette" id="cineVig"></div>
+    <div class="cine__dim" id="cineDim"></div>
 
     <div class="cine__crest" id="cineCrest"><img src="img/logo.webp" alt=""></div>
+
+    <div class="cine__welcome">
+      <p class="w w--pre" data-at="21.4">Bienvenidos a la</p>
+      <p class="w w--title" data-at="22.0">Licenciatura</p>
+      <p class="w w--gen" data-at="22.7">Generación 2026</p>
+      <p class="w w--date" data-at="23.3">Lunes 23 de noviembre, 10:30 horas</p>
+      <div class="w w--rule" data-at="24.4"></div>
+      <p class="w w--text" data-at="25.0">Hoy despedimos a la generación 2026, en el año en que nuestro colegio cumple setenta años formando personas en Concepción.</p>
+      <p class="w w--text" data-at="29.0">Los recibimos con orgullo y gratitud, junto a sus familias y profesores, para celebrar el camino recorrido y el rumbo que comienza.</p>
+    </div>
 
     <div class="cine__dark" id="cineDark"></div>
     <div class="cine__bar"><span id="cineBar"></span></div>
   </div>
-  <button class="skip" id="skip" type="button">Saltar presentación</button>
+  <button class="skip" id="skip" type="button">Ir al programa</button>
 
   <!-- ================= PÁGINA ================= -->
   <header class="top" id="inicio">
-    <div class="top__bg" aria-hidden="true"><img src="img/teatro-sala.jpg" alt=""></div>
+    <div class="top__bg" aria-hidden="true"><img src="img/video-sala.jpg" alt=""></div>
     <div class="top__inner">
       <div class="crest crest--top enter" style="--i:0"><img src="img/logo.webp" alt="Insignia del Colegio Marina de Chile, 70 años, Concepción 1956" width="1830" height="1774"></div>
       <h1 class="top__title">
-        <span class="top__pre enter" style="--i:1">Bienvenidos a la</span>
-        <span class="enter" style="--i:2">Licenciatura</span>
-        <span class="top__sub enter" style="--i:3">Generación 2026</span>
+        <span class="enter" style="--i:1">Licenciatura</span>
+        <span class="top__sub enter" style="--i:2">Generación 2026</span>
       </h1>
-      <p class="top__date enter" style="--i:4">Lunes 23 de noviembre, 10:30 horas</p>
+      <p class="top__date enter" style="--i:3">Lunes 23 de noviembre, 10:30 horas</p>
+      <a class="hint enter" style="--i:5" href="#programa">
+        <span>Desliza hacia abajo para ver todo el programa</span>
+        <svg class="hint__arrow" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
-    <a class="hint enter" style="--i:6" href="#palabras">
-      <span>Desliza hacia abajo para ver todo</span>
-      <svg class="hint__arrow" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
   </header>
 
   <main>
-    <section class="welcome" id="palabras" aria-labelledby="bienvenida">
+    <section class="program" id="programa" aria-labelledby="programa-titulo">
       <div class="wrap">
-        <div class="welcome__card reveal">
-          <h2 id="bienvenida">Palabras de bienvenida</h2>
-          <p>Hoy despedimos a la generación 2026, en el año en que nuestro colegio cumple setenta años formando personas en Concepción.</p>
-          <p>Los recibimos con orgullo y gratitud, junto a sus familias y profesores, para celebrar el camino recorrido y el rumbo que comienza.</p>
+        <div class="program__head reveal">
+          <h2 id="programa-titulo">Programa</h2>
+          <p>Ceremonia de licenciatura</p>
         </div>
-      </div>
-    </section>
 
-    <section class="program" aria-labelledby="programa">
-      <div class="wrap">
-        <h2 id="programa" class="program__title reveal">Programa</h2>
         <ol class="steps">
-          <li class="step reveal"><span class="step__n">1</span><span class="step__t">Entrada estudiantes generación 2026</span></li>
-          <li class="step reveal"><span class="step__n">2</span><span class="step__t">Himno Nacional</span></li>
-          <li class="step reveal"><span class="step__n">3</span><span class="step__t">Palabras de la Directora</span></li>
-          <li class="step step--key reveal"><span class="step__n">4</span><span class="step__t">Entrega de licencias 4° Medio A</span></li>
-          <li class="step reveal"><span class="step__n">5</span><span class="step__t">Número artístico</span></li>
-          <li class="step step--key reveal"><span class="step__n">6</span><span class="step__t">Entrega de licencias 4° Medio B</span></li>
-          <li class="step reveal"><span class="step__n">7</span><span class="step__t">Presentación de video</span></li>
-          <li class="step step--key reveal"><span class="step__n">8</span><span class="step__t">Entrega de licencias 4° Medio C</span></li>
-          <li class="step reveal"><span class="step__n">9</span><span class="step__t">Palabras estudiante generación 2026</span></li>
-          <li class="step reveal"><span class="step__n">10</span><span class="step__t">Premiación estudiantes destacados</span></li>
-          <li class="step reveal"><span class="step__n">11</span><span class="step__t">Himno del colegio</span></li>
-          <li class="step step--light reveal"><span class="step__n">12</span><span class="step__t">Ceremonia de la Luz</span></li>
-          <li class="step reveal"><span class="step__n">13</span><span class="step__t">Canción del adiós</span></li>
+          <li class="step reveal"><span class="step__icon"><svg><use href="#i-users"/></svg></span><span class="step__body"><span class="step__n">1</span><span class="step__t">Entrada estudiantes generación 2026</span></span></li>
+          <li class="step reveal"><span class="step__icon"><svg><use href="#i-flag"/></svg></span><span class="step__body"><span class="step__n">2</span><span class="step__t">Himno Nacional</span></span></li>
+          <li class="step reveal"><span class="step__icon"><svg><use href="#i-mic"/></svg></span><span class="step__body"><span class="step__n">3</span><span class="step__t">Palabras de la Directora</span></span></li>
+          <li class="step step--key reveal"><span class="step__icon"><svg><use href="#i-cap"/></svg></span><span class="step__body"><span class="step__n">4</span><span class="step__t">Entrega de licencias</span><span class="step__course">4° Medio A</span></span></li>
+          <li class="step reveal"><span class="step__icon"><svg><use href="#i-music"/></svg></span><span class="step__body"><span class="step__n">5</span><span class="step__t">Número artístico</span></span></li>
+          <li class="step step--key reveal"><span class="step__icon"><svg><use href="#i-cap"/></svg></span><span class="step__body"><span class="step__n">6</span><span class="step__t">Entrega de licencias</span><span class="step__course">4° Medio B</span></span></li>
+          <li class="step reveal"><span class="step__icon"><svg><use href="#i-video"/></svg></span><span class="step__body"><span class="step__n">7</span><span class="step__t">Presentación de video</span></span></li>
+          <li class="step step--key reveal"><span class="step__icon"><svg><use href="#i-cap"/></svg></span><span class="step__body"><span class="step__n">8</span><span class="step__t">Entrega de licencias</span><span class="step__course">4° Medio C</span></span></li>
+          <li class="step reveal"><span class="step__icon"><svg><use href="#i-vocal"/></svg></span><span class="step__body"><span class="step__n">9</span><span class="step__t">Palabras estudiante generación 2026</span></span></li>
+          <li class="step reveal"><span class="step__icon"><svg><use href="#i-trophy"/></svg></span><span class="step__body"><span class="step__n">10</span><span class="step__t">Premiación estudiantes destacados</span></span></li>
+          <li class="step reveal"><span class="step__icon"><svg><use href="#i-anchor"/></svg></span><span class="step__body"><span class="step__n">11</span><span class="step__t">Himno del colegio</span></span></li>
+          <li class="step step--light reveal"><span class="step__icon"><svg><use href="#i-flame"/></svg></span><span class="step__body"><span class="step__n">12</span><span class="step__t">Ceremonia de la Luz</span></span></li>
+          <li class="step reveal"><span class="step__icon"><svg><use href="#i-hand"/></svg></span><span class="step__body"><span class="step__n">13</span><span class="step__t">Canción del adiós</span></span></li>
         </ol>
       </div>
     </section>
 
     <section class="farewell" id="despedida" aria-labelledby="cierre">
-      <div class="farewell__bg" aria-hidden="true"><img src="img/teatro-hall.jpg" alt=""></div>
+      <div class="farewell__bg" aria-hidden="true"><img src="img/video-entrada.jpg" alt=""></div>
       <div class="farewell__glow" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
       <div class="wrap farewell__inner reveal">
         <h2 id="cierre">Hasta siempre, generación 2026</h2>
@@ -113,43 +133,42 @@
   <script>
   (function () {
     var root = document.documentElement;
-    var playing = root.classList.contains('js');
 
     // ---------- Aparición al deslizar ----------
     var rev = document.querySelectorAll('.reveal');
-    if (playing && 'IntersectionObserver' in window) {
+    if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
-      }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+      }, { threshold: 0.12 });
       rev.forEach(function (el) { io.observe(el); });
     } else {
       rev.forEach(function (el) { el.classList.add('is-in'); });
     }
 
-    if (!playing) { root.classList.add('is-done'); return; }
-
     // ---------- Presentación con cámara ----------
     var white = document.getElementById('cineWhite');
     var crest = document.getElementById('cineCrest');
     var vig = document.getElementById('cineVig');
+    var dim = document.getElementById('cineDim');
     var dark = document.getElementById('cineDark');
     var bar = document.getElementById('cineBar');
     var skip = document.getElementById('skip');
     var replay = document.getElementById('replay');
+    var words = Array.prototype.slice.call(document.querySelectorAll('.cine__welcome .w'));
 
     // Cada toma: cuándo empieza y termina (segundos), desde qué distancia parte,
-    // cuánto se acerca y hacia qué punto de la foto avanza la cámara.
+    // cuánto se acerca y hacia qué punto de la imagen avanza la cámara.
     var plan = [
-      { t0: 3.6,  t1: 10.6, in: 1.4, out: 1.1, from: 0.32, to: 2.3, fx: 0.6,  fy: 0.7 },  // fachada
-      { t0: 9.5,  t1: 16.2, in: 1.1, out: 1.1, from: 1.0,  to: 2.1, fx: 0.5,  fy: 0.6 },  // interior
-      { t0: 15.1, t1: 21.4, in: 1.1, out: 1.2, from: 0.95, to: 1.7, fx: 0.5,  fy: 0.62 }  // sala
+      { t0: 3.6,  t1: 10.6, fin: 1.4, fout: 1.1, from: 0.34, to: 2.2, fx: 0.52, fy: 0.36 }, // fachada desde el aire
+      { t0: 9.5,  t1: 16.2, fin: 1.1, fout: 1.1, from: 1.0,  to: 2.0, fx: 0.5,  fy: 0.8  }, // la entrada
+      { t0: 15.1, t1: 34.6, fin: 1.1, fout: 0,   from: 1.0,  to: 2.3, fx: 0.6,  fy: 0.56 }  // la sala y el escenario
     ];
-    var TOTAL = 21.8;
+    var TOTAL = 35.4;
 
     var shots = Array.prototype.slice.call(document.querySelectorAll('.shot')).map(function (el, i) {
-      var w = +el.dataset.w, h = +el.dataset.h;
-      var back = new Image(); back.src = el.dataset.src; back.alt = ''; back.className = 'shot__back';
-      var img = new Image(); img.src = el.dataset.src; img.alt = ''; img.className = 'shot__img';
+      var w = +el.getAttribute('data-w'), h = +el.getAttribute('data-h'), src = el.getAttribute('data-src');
+      var back = new Image(); back.src = src; back.alt = ''; back.className = 'shot__back';
+      var img = new Image(); img.src = src; img.alt = ''; img.className = 'shot__img';
       img.style.width = w + 'px'; img.style.height = h + 'px';
       el.appendChild(back); el.appendChild(img);
       return { el: el, img: img, w: w, h: h, p: plan[i] };
@@ -161,15 +180,7 @@
     var easeOut = function (x) { return 1 - Math.pow(1 - x, 3); };
     var easeIn = function (x) { return x * x * x; };
 
-    var start = 0, raf = 0;
-
-    function frame(now) {
-      if (!start) start = now;
-      var t = (now - start) / 1000;
-      render(t);
-      if (t >= TOTAL) { finish(); return; }
-      raf = requestAnimationFrame(frame);
-    }
+    var start = 0, raf = 0, last = -1;
 
     function render(t) {
       var vw = window.innerWidth, vh = window.innerHeight;
@@ -180,37 +191,50 @@
       var cs = (0.82 + 0.18 * appear) * (1 - 0.96 * away);
       crest.style.transform = 'translate(-50%, -50%) scale(' + cs.toFixed(4) + ')';
       crest.style.opacity = (appear * (1 - seg(t, 4.6, 5.4))).toFixed(3);
-      if (t > 1.6 && !crest.classList.contains('is-shine')) crest.classList.add('is-shine');
+      crest.classList.toggle('is-shine', t > 1.6 && t < 3.4);
       white.style.opacity = (1 - smooth(seg(t, 3.0, 4.6))).toFixed(3);
 
-      // 2. La cámara avanza hacia el teatro, entra y llega a la sala
+      // 2. La cámara llega al teatro, a la entrada y a la sala
       shots.forEach(function (s) {
         var P = s.p;
         if (t < P.t0 - 0.05 || t > P.t1 + 0.05) { s.el.style.opacity = 0; return; }
         var p = seg(t, P.t0, P.t1);
-        var pe = 0.55 * p + 0.45 * p * p;                // avanza y acelera al final
+        var pe = 0.55 * p + 0.45 * p * p;
         var contain = Math.min(vw / s.w, vh / s.h);
         var cover = Math.max(vw / s.w, vh / s.h);
         var s0 = contain * P.from, s1 = cover * P.to;
         var sc = s0 * Math.pow(s1 / s0, pe);
-        var k = smooth(p);
+        var k = smooth(seg(p, 0, 0.7));
         var tx = (1 - k) * (vw - sc * s.w) / 2 + k * (vw / 2 - sc * P.fx * s.w);
         var ty = (1 - k) * (vh - sc * s.h) / 2 + k * (vh / 2 - sc * P.fy * s.h);
         if (sc * s.w >= vw) tx = Math.min(0, Math.max(vw - sc * s.w, tx));
         if (sc * s.h >= vh) ty = Math.min(0, Math.max(vh - sc * s.h, ty));
         s.img.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0) scale(' + sc.toFixed(5) + ')';
-        var o = smooth(seg(t, P.t0, P.t0 + P.in)) * (1 - smooth(seg(t, P.t1 - P.out, P.t1)));
+        var o = smooth(seg(t, P.t0, P.t0 + P.fin));
+        if (P.fout) o *= 1 - smooth(seg(t, P.t1 - P.fout, P.t1));
         s.el.style.opacity = o.toFixed(3);
       });
       vig.style.opacity = seg(t, 4, 5.5).toFixed(3);
 
-      // 3. Fundido final hacia la bienvenida
-      dark.style.opacity = smooth(seg(t, 20.6, 21.6)).toFixed(3);
+      // 3. Bienvenida sobre la sala
+      dim.style.opacity = (0.72 * smooth(seg(t, 20.2, 21.6))).toFixed(3);
+      words.forEach(function (w) { w.classList.toggle('on', t >= +w.getAttribute('data-at')); });
+
+      // 4. Fundido final hacia el programa
+      dark.style.opacity = smooth(seg(t, 34.2, 35.2)).toFixed(3);
       bar.style.transform = 'scaleX(' + clamp(t / TOTAL).toFixed(4) + ')';
     }
 
-    // Para revisar un instante exacto: cineAt(segundos)
-    window.cineAt = function (t) { cancelAnimationFrame(raf); render(t); };
+    function frame(now) {
+      if (!start) start = now;
+      var t = (now - start) / 1000;
+      // si el teléfono pausa la página, se retoma donde iba
+      if (last >= 0 && t - last > 0.5) { start += (t - last - 0.016) * 1000; t = last + 0.016; }
+      last = t;
+      render(t);
+      if (t >= TOTAL) { finish(); return; }
+      raf = requestAnimationFrame(frame);
+    }
 
     function finish() {
       cancelAnimationFrame(raf);
@@ -221,13 +245,16 @@
 
     function play() {
       cancelAnimationFrame(raf);
-      crest.classList.remove('is-shine');
       root.classList.remove('is-done');
       root.classList.add('is-playing');
       window.scrollTo(0, 0);
-      start = 0;
+      start = 0; last = -1;
+      render(0);
       raf = requestAnimationFrame(frame);
     }
+
+    // Para revisar un instante exacto: cineAt(segundos)
+    window.cineAt = function (t) { cancelAnimationFrame(raf); render(t); };
 
     skip.addEventListener('click', finish);
     replay.addEventListener('click', play);
