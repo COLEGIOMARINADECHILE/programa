@@ -2,181 +2,180 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Licenciatura 2026 · Colegio Marina de Chile</title>
-  <meta name="description" content="Programa de la ceremonia de licenciatura de la generación 2026 del Colegio Marina de Chile, Concepción, en el Teatro Biobío.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1530">
+  <title>Licenciatura Generación 2026 - Colegio Marina de Chile</title>
+  <meta name="description" content="Programa de la ceremonia de licenciatura de la generación 2026 del Colegio Marina de Chile. Lunes 23 de noviembre, 10:30 horas.">
   <link rel="icon" href="img/logo.webp">
+  <link rel="preload" as="image" href="img/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100,400;100,500;125,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100,400;100,500;100,600;125,300;125,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script>
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.documentElement.classList.add('js');
+      document.documentElement.classList.add('js', 'is-playing');
     }
   </script>
 </head>
 <body>
 
-  <!-- 1. Entrada: el logo se aleja y aparece "Licenciatura" -->
-  <header class="intro" id="inicio">
-    <div class="intro__stage">
-      <div class="intro__white" aria-hidden="true"></div>
-      <div class="crest">
-        <img src="img/logo.webp" alt="Insignia del Colegio Marina de Chile, 70 años, Concepción 1956" width="1830" height="1774">
+  <!-- ================= PRESENTACIÓN AUTOMÁTICA ================= -->
+  <div class="cine" id="cine" aria-hidden="true">
+    <div class="cine__white"></div>
+
+    <div class="cine__shot"><img src="img/teatro-exterior.jpg" alt=""></div>
+    <div class="cine__shot"><img src="img/teatro-hall.jpg" alt=""></div>
+    <div class="cine__shot cine__shot--tall"><img src="img/teatro-sala.jpg" alt=""></div>
+    <div class="cine__vignette"></div>
+
+    <div class="cine__title">
+      <div class="cine__crest"><img src="img/logo.webp" alt=""></div>
+      <div class="cine__words">
+        <p class="cine__line cine__line--1">Licenciatura</p>
+        <p class="cine__line cine__line--2">Generación 2026</p>
+        <p class="cine__line cine__line--3">Lunes 23 de noviembre, 10:30 horas</p>
       </div>
-      <div class="intro__title">
-        <h1>Licenciatura</h1>
-        <p>Generación 2026 del Colegio Marina de Chile</p>
-        <p class="intro__date">Lunes 23 de noviembre, 10:30 horas</p>
+      <div class="sparks">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
-      <p class="intro__hint label" aria-hidden="true">Desliza para comenzar</p>
+    </div>
+
+    <div class="cine__dark"></div>
+    <div class="cine__bar"><span></span></div>
+  </div>
+  <button class="skip" id="skip" type="button">Saltar presentación</button>
+
+  <!-- ================= PÁGINA ================= -->
+  <header class="top" id="inicio">
+    <div class="top__bg" aria-hidden="true"><img src="img/teatro-sala.jpg" alt=""></div>
+    <div class="top__inner">
+      <div class="crest crest--top"><img src="img/logo.webp" alt="Insignia del Colegio Marina de Chile, 70 años, Concepción 1956" width="1830" height="1774"></div>
+      <h1 class="top__title"><span class="enter" style="--i:1">Licenciatura</span> <span class="top__sub enter" style="--i:2">Generación 2026</span></h1>
+      <p class="top__date enter" style="--i:3">Lunes 23 de noviembre, 10:30 horas</p>
     </div>
   </header>
 
   <main>
-    <!-- 2. Acercamiento al Teatro Biobío -->
-    <section class="approach" aria-label="Llegada al Teatro Biobío">
-      <div class="approach__track">
-        <div class="approach__frame">
-          <figure class="shot">
-            <img src="img/teatro-exterior.jpg" alt="Fachada del Teatro Biobío" width="1400" height="788">
-          </figure>
-          <figure class="shot">
-            <img src="img/teatro-hall.jpg" alt="Interior del Teatro Biobío" width="1200" height="800">
-          </figure>
-          <figure class="shot">
-            <img src="img/teatro-sala.jpg" alt="Sala del Teatro Biobío" width="1000" height="1500">
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. Palabras de bienvenida -->
-    <section class="words" aria-labelledby="bienvenida">
-      <div class="container words__grid rise">
-        <h2 id="bienvenida">Bienvenidos</h2>
-        <div class="words__body">
+    <section class="welcome" aria-labelledby="bienvenida">
+      <div class="wrap">
+        <div class="welcome__card enter" style="--i:4">
+          <h2 id="bienvenida">Bienvenidos</h2>
           <p>Hoy despedimos a la generación 2026, en el año en que nuestro colegio cumple setenta años formando personas en Concepción.</p>
           <p>Los recibimos con orgullo y gratitud, junto a sus familias y profesores, para celebrar el camino recorrido y el rumbo que comienza.</p>
-          <p class="words__sign">Colegio Marina de Chile</p>
         </div>
       </div>
     </section>
 
-    <!-- 4. Programa -->
     <section class="program" aria-labelledby="programa">
-      <div class="container">
-        <div class="program__head rise">
-          <p class="label">Ceremonia de licenciatura</p>
-          <h2 id="programa">Programa</h2>
-        </div>
-        <ol class="program__list">
-          <li class="program__item"><span class="program__num">01</span><span class="program__name">Entrada estudiantes generación 2026</span></li>
-          <li class="program__item"><span class="program__num">02</span><span class="program__name">Himno Nacional</span></li>
-          <li class="program__item"><span class="program__num">03</span><span class="program__name">Palabras de la Directora</span></li>
-          <li class="program__item program__item--key"><span class="program__num">04</span><span class="program__name">Entrega de licencias 4° Medio A</span></li>
-          <li class="program__item"><span class="program__num">05</span><span class="program__name">Número artístico</span></li>
-          <li class="program__item program__item--key"><span class="program__num">06</span><span class="program__name">Entrega de licencias 4° Medio B</span></li>
-          <li class="program__item"><span class="program__num">07</span><span class="program__name">Presentación de video</span></li>
-          <li class="program__item program__item--key"><span class="program__num">08</span><span class="program__name">Entrega de licencias 4° Medio C</span></li>
-          <li class="program__item"><span class="program__num">09</span><span class="program__name">Palabras estudiante generación 2026</span></li>
-          <li class="program__item"><span class="program__num">10</span><span class="program__name">Premiación estudiantes destacados</span></li>
-          <li class="program__item"><span class="program__num">11</span><span class="program__name">Himno del colegio</span></li>
-          <li class="program__item"><span class="program__num">12</span><span class="program__name">Ceremonia de la Luz</span></li>
-          <li class="program__item"><span class="program__num">13</span><span class="program__name">Canción del adiós</span></li>
+      <div class="wrap">
+        <h2 id="programa" class="program__title enter" style="--i:5">Programa</h2>
+        <ol class="steps">
+          <li class="step enter" style="--i:6"><span class="step__n">1</span><span class="step__t">Entrada estudiantes generación 2026</span></li>
+          <li class="step enter" style="--i:7"><span class="step__n">2</span><span class="step__t">Himno Nacional</span></li>
+          <li class="step enter" style="--i:8"><span class="step__n">3</span><span class="step__t">Palabras de la Directora</span></li>
+          <li class="step step--key enter" style="--i:9"><span class="step__n">4</span><span class="step__t">Entrega de licencias 4° Medio A</span></li>
+          <li class="step enter" style="--i:10"><span class="step__n">5</span><span class="step__t">Número artístico</span></li>
+          <li class="step step--key enter" style="--i:11"><span class="step__n">6</span><span class="step__t">Entrega de licencias 4° Medio B</span></li>
+          <li class="step enter" style="--i:12"><span class="step__n">7</span><span class="step__t">Presentación de video</span></li>
+          <li class="step step--key enter" style="--i:13"><span class="step__n">8</span><span class="step__t">Entrega de licencias 4° Medio C</span></li>
+          <li class="step enter" style="--i:14"><span class="step__n">9</span><span class="step__t">Palabras estudiante generación 2026</span></li>
+          <li class="step enter" style="--i:15"><span class="step__n">10</span><span class="step__t">Premiación estudiantes destacados</span></li>
+          <li class="step enter" style="--i:16"><span class="step__n">11</span><span class="step__t">Himno del colegio</span></li>
+          <li class="step step--light enter" style="--i:17"><span class="step__n">12</span><span class="step__t">Ceremonia de la Luz</span></li>
+          <li class="step enter" style="--i:18"><span class="step__n">13</span><span class="step__t">Canción del adiós</span></li>
         </ol>
+
+        <a class="more enter" style="--i:19" href="#despedida">
+          <span>Desliza para ver las palabras de despedida</span>
+          <svg class="more__arrow" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </section>
 
-    <!-- 5. Palabras de cierre -->
-    <section class="words words--close" aria-labelledby="cierre">
-      <div class="container words__grid rise">
+    <section class="farewell" id="despedida" aria-labelledby="cierre">
+      <div class="farewell__bg" aria-hidden="true"><img src="img/teatro-hall.jpg" alt=""></div>
+      <div class="farewell__glow" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="wrap farewell__inner reveal">
         <h2 id="cierre">Hasta siempre, generación 2026</h2>
-        <div class="words__body">
-          <p>Gracias por acompañarnos en esta ceremonia.</p>
-          <p>Que el rumbo aprendido en estas aulas los guíe en cada puerto que elijan. El Colegio Marina de Chile siempre será su casa.</p>
-        </div>
+        <p>Gracias por acompañarnos en esta ceremonia.</p>
+        <p>Que el rumbo aprendido en estas aulas los guíe en cada puerto que elijan. El Colegio Marina de Chile siempre será su casa.</p>
       </div>
     </section>
   </main>
 
-  <footer class="foot container">
-    <div class="crest"><img src="img/logo.webp" alt="" width="1830" height="1774"></div>
+  <footer class="foot">
+    <div class="crest crest--foot"><img src="img/logo.webp" alt="" width="1830" height="1774"></div>
     <p class="foot__name">Colegio Marina de Chile</p>
-    <div class="foot__meta">
-      <span>Concepción, 1956 a 2026</span>
-      <span>Licenciatura Generación 2026</span>
-      <span>Lunes 23 de noviembre, 10:30 horas</span>
+    <p class="foot__meta">Licenciatura Generación 2026</p>
+    <p class="foot__meta">Lunes 23 de noviembre, 10:30 horas</p>
+    <div class="foot__actions">
+      <button class="btn btn--primary" id="replay" type="button">Ver la presentación otra vez</button>
+      <a class="btn" href="#inicio">Volver al programa</a>
     </div>
-    <a class="foot__top" href="#inicio">Volver al inicio</a>
   </footer>
 
   <script>
   (function () {
     var root = document.documentElement;
-    if (!root.classList.contains('js')) return;
+    var cine = document.getElementById('cine');
+    var skip = document.getElementById('skip');
+    var replay = document.getElementById('replay');
+    var timers = [];
 
-    var clamp = function (v) { return Math.max(0, Math.min(1, v)); };
-    var range = function (p, a, b) { return clamp((p - a) / (b - a)); };
-    var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
+    // Línea de tiempo (milisegundos)
+    var timeline = [
+      [100,   'sc-logo'],   // aparece el logo sobre blanco
+      [3400,  'sc-title'],  // el logo se aleja, llega la noche y el título
+      [8200,  'sc-1'],      // la cámara se acerca al teatro
+      [12000, 'sc-2'],      // entra al interior
+      [15800, 'sc-3'],      // llega a la sala
+      [19600, 'sc-end']     // fundido a la noche
+    ];
+    var total = 20800;
 
-    var intro = document.querySelector('.intro');
-    var stage = document.querySelector('.intro__stage');
-    var track = document.querySelector('.approach__track');
-    var shots = Array.prototype.slice.call(document.querySelectorAll('.shot'));
-    var frame = document.querySelector('.approach__frame');
+    function clear() { timers.forEach(clearTimeout); timers = []; }
 
-    function progress(el) {
-      var r = el.getBoundingClientRect();
-      var span = el.offsetHeight - window.innerHeight;
-      return span > 0 ? clamp(-r.top / span) : 0;
+    function finish() {
+      clear();
+      root.classList.remove('is-playing');
+      root.classList.add('is-done');
+      window.scrollTo(0, 0);
     }
 
-    function update() {
-      // Entrada: el logo se aleja
-      var p = progress(intro);
-      var away = ease(range(p, 0.05, 0.6));
-      stage.style.setProperty('--scale', (1 - away * 0.62).toFixed(4));
-      stage.style.setProperty('--lift', (away * 16).toFixed(2));
-      stage.style.setProperty('--fade', range(p, 0.1, 0.5).toFixed(3));
-      stage.style.setProperty('--reveal', ease(range(p, 0.45, 0.8)).toFixed(3));
-
-      // Teatro: exterior, hall, sala
-      var q = progress(track);
-      // Cámara que avanza: cada toma se acerca y se funde con la siguiente
-      var starts = [0, 0.3, 0.6];
-      var fade = 0.12;
-      shots.forEach(function (s, i) {
-        var o = i === 0 ? 1 : range(q, starts[i], starts[i] + fade);
-        var end = i < shots.length - 1 ? starts[i + 1] + fade : 1;
-        var z = 1 + ease(range(q, starts[i], end)) * (i < shots.length - 1 ? 0.7 : 0.35);
-        s.style.setProperty('--o', o.toFixed(3));
-        s.style.setProperty('--z', z.toFixed(4));
+    function play() {
+      clear();
+      cine.className = 'cine';
+      root.classList.remove('is-done');
+      root.classList.add('is-playing');
+      window.scrollTo(0, 0);
+      void cine.offsetWidth; // reinicia las animaciones
+      timeline.forEach(function (step) {
+        timers.push(setTimeout(function () { cine.classList.add(step[1]); }, step[0]));
       });
-      frame.style.setProperty('--out', range(q, 0.88, 1).toFixed(3));
+      timers.push(setTimeout(finish, total));
     }
 
-    var ticking = false;
-    function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () { update(); ticking = false; });
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update();
+    skip.addEventListener('click', finish);
+    replay.addEventListener('click', function () {
+      if (root.classList.contains('js')) { play(); } else { window.scrollTo(0, 0); }
+    });
 
-    // Aparición suave
+    if (root.classList.contains('js')) {
+      play();
+    } else {
+      root.classList.add('is-done');
+    }
+
+    // Despedida aparece al deslizar
+    var rev = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.2 });
-      document.querySelectorAll('.rise').forEach(function (el) { io.observe(el); });
+        entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('is-in'); });
+      }, { threshold: 0.25 });
+      rev.forEach(function (el) { io.observe(el); });
     } else {
-      document.querySelectorAll('.rise').forEach(function (el) { el.classList.add('is-in'); });
+      rev.forEach(function (el) { el.classList.add('is-in'); });
     }
   })();
   </script>
