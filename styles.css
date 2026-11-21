@@ -1,0 +1,212 @@
+/* Hallmark v2.0.0 · theme: midnight (manual pick, no Node) · accent swapped azure → the logo's gold, by the school's own mark · shape: scroll story (logo → title → theatre approach → words → programme → closing) · signature: the crest receding into the night to reveal "Licenciatura" */
+/* critique: the risk is a dark page that reads as a nightclub; the gold stays under 5% and the type stays light and wide so it reads as a ceremony. */
+/* waive 44b: the user asked for the logo as the full first screen; the headline arrives on the first scroll. */
+
+:root {
+  --color-paper: oklch(17% 0.05 262);
+  --color-paper-2: oklch(21% 0.055 262);
+  --color-paper-3: oklch(25% 0.058 262);
+  --color-ink: oklch(96% 0.012 250);
+  --color-ink-2: oklch(88% 0.03 250);
+  --color-muted: oklch(74% 0.035 256);
+  --color-rule: oklch(31% 0.058 262);
+  --color-rule-2: oklch(42% 0.06 262);
+  --color-accent: oklch(80% 0.1 85);
+  --color-accent-ink: oklch(18% 0.05 262);
+  --color-focus: oklch(86% 0.11 85);
+  --color-white: oklch(100% 0 0);
+  --color-shade: oklch(10% 0.04 262 / 0.75);
+  --color-shade-0: oklch(10% 0.04 262 / 0);
+
+  --font-display: "Mona Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-display);
+
+  --text-s: 0.9375rem;
+  --text-m: 1.0625rem;
+  --text-l: clamp(1.25rem, 1rem + 0.8vw, 1.5rem);
+  --text-display-s: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+  --text-display: clamp(2.5rem, 1.4rem + 5vw, 5.5rem);
+
+  --space-xs: 0.5rem; --space-sm: 0.75rem; --space-md: 1.25rem;
+  --space-lg: 2rem; --space-xl: 4rem; --space-2xl: clamp(5rem, 3rem + 8vw, 10rem);
+
+  --container: 72rem;
+  --measure: 38rem;
+  --dur-short: 180ms; --dur-long: 900ms;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-m);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-stretch: 125%;
+  letter-spacing: -0.015em;
+  line-height: 1.04;
+  margin: 0;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+p { margin: 0; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 4px; transition: none; }
+
+.container { width: min(100% - 2rem, var(--container)); margin-inline: auto; }
+.label { font-size: var(--text-s); font-weight: 500; color: var(--color-muted); }
+
+/* ---------- 1. Entrada: el logo se aleja ---------- */
+.intro { position: relative; }
+.intro__stage {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: var(--space-lg);
+  padding: var(--space-xl) 1rem;
+  position: relative;
+  isolation: isolate;
+}
+.intro__white { position: absolute; inset: 0; background: var(--color-white); z-index: -1; opacity: 0; }
+.crest {
+  width: min(42vmin, 18rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-white);
+  padding: 1.5%;
+  display: grid;
+  place-items: center;
+}
+.crest img { width: 100%; height: 100%; object-fit: contain; }
+.intro__title { text-align: center; display: grid; gap: var(--space-sm); }
+.intro__title h1 { font-size: var(--text-display); }
+.intro__title p { font-size: var(--text-l); color: var(--color-ink-2); }
+.intro__title .intro__date { font-size: var(--text-m); font-weight: 500; color: var(--color-accent); }
+.intro__hint { display: none; }
+
+/* Con JavaScript y movimiento permitido: escena fija que se recorre */
+.js .intro { height: 280svh; }
+.js .intro__stage { position: sticky; top: 0; height: 100svh; padding: 0 1rem; }
+.js .intro__white { opacity: calc(1 - var(--fade, 0)); }
+.js .crest {
+  width: min(86vmin, 46rem);
+  transform: translateY(calc(var(--lift, 0) * -1svh)) scale(var(--scale, 1));
+  will-change: transform;
+}
+.js .intro__title {
+  position: absolute;
+  left: 1rem; right: 1rem;
+  top: 58svh;
+  opacity: var(--reveal, 0);
+  transform: translateY(calc((1 - var(--reveal, 0)) * 2rem));
+}
+.js .intro__hint {
+  display: block;
+  position: absolute;
+  bottom: var(--space-lg);
+  left: 0; right: 0;
+  text-align: center;
+  color: var(--color-accent-ink);
+  opacity: calc(1 - var(--fade, 0) * 3);
+}
+
+/* ---------- 2. Acercamiento al Teatro Biobío ---------- */
+.shot { position: relative; height: 85svh; overflow: hidden; margin: 0 0 var(--space-md); }
+.shot img { width: 100%; height: 100%; object-fit: cover; }
+
+.js .approach__track { height: 420svh; position: relative; }
+.js .approach__frame { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.js .approach__frame::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--color-paper);
+  opacity: var(--out, 0);
+  pointer-events: none;
+}
+.js .shot {
+  position: absolute; inset: 0; height: auto; margin: 0;
+  opacity: var(--o, 0);
+}
+.js .shot img { transform: scale(var(--z, 1)); will-change: transform; }
+.js .shot:first-child { --o: 1; }
+
+/* ---------- 3. Palabras ---------- */
+.words { padding-block: var(--space-2xl); }
+.words__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg);
+}
+.words h2 { font-size: var(--text-display-s); }
+.words__body { display: grid; gap: var(--space-md); max-width: var(--measure); font-size: var(--text-l); line-height: 1.55; color: var(--color-ink-2); }
+.words__sign { font-size: var(--text-m); color: var(--color-muted); }
+@media (min-width: 52rem) {
+  .words__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-xl); }
+}
+.words--close { background: var(--color-paper-2); }
+
+/* ---------- 4. Programa ---------- */
+.program { padding-block: var(--space-2xl); }
+.program__head { display: grid; gap: var(--space-sm); margin-bottom: var(--space-xl); }
+.program__head h2 { font-size: var(--text-display); }
+.program__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-rule); }
+.program__item {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--space-md);
+  padding-block: var(--space-md);
+  border-bottom: 1px solid var(--color-rule);
+}
+.program__num {
+  font-size: var(--text-display-s);
+  font-weight: 300;
+  font-stretch: 125%;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-muted);
+  line-height: 1;
+}
+.program__name { font-size: var(--text-l); font-weight: 400; line-height: 1.3; }
+.program__item--key .program__num { color: var(--color-accent); }
+.program__item--key .program__name { font-weight: 500; }
+@media (min-width: 52rem) {
+  .program__list { columns: 2; column-gap: var(--space-xl); border-top: 0; }
+  .program__item { break-inside: avoid; border-top: 1px solid var(--color-rule); border-bottom: 0; }
+}
+
+/* ---------- 5. Pie ---------- */
+.foot { padding-block: var(--space-2xl) var(--space-xl); text-align: center; display: grid; justify-items: center; gap: var(--space-md); }
+.foot .crest { width: 7rem; }
+.foot__name { font-size: var(--text-display-s); font-weight: 300; font-stretch: 125%; line-height: 1.1; }
+.foot__meta { color: var(--color-muted); font-size: var(--text-s); display: grid; gap: var(--space-xs); }
+.foot__top {
+  margin-top: var(--space-lg);
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  border: 1px solid var(--color-rule-2);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);
+}
+.foot__top:hover { background: var(--color-paper-2); border-color: var(--color-accent); }
+.foot__top:active { background: var(--color-paper-3); }
+
+/* Aparición suave de secciones (visible por defecto) */
+.js .rise { opacity: 0.4; transform: translateY(1.5rem); transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out); }
+.js .rise.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .rise { opacity: 1; transform: none; transition: none; }
+}
