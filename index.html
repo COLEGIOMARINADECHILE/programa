@@ -200,7 +200,8 @@
       return { el: el, img: img, w: w, h: h, p: P };
     }
     var shots = [
-      makeShot('shotFachada', { t0: 3.6,  t1: 10.4, fin: 1.4, fout: 1.0, from: 0.34, to: 2.1, fx: 0.62, fy: 0.84 }),
+      // fachada: llena la pantalla y la cámara recorre el edificio mientras se acerca un poco
+      makeShot('shotFachada', { t0: 3.6,  t1: 10.4, fin: 1.4, fout: 1.0, pan: true, from: 1.0, to: 1.12, fx0: 0.29, fx: 0.37, fy: 0.6 }),
       makeShot('shotSala',    { t0: 19.4, t1: 46.0, fin: 1.0, fout: 0,   from: 1.0,  to: 1.45, fx: 0.5, fy: 0.56 })
     ];
     var CLIP_START = 9.4, CLIP_LEN = 11.3;   // fragmentos del video
@@ -221,11 +222,21 @@
       var pe = 0.55 * p + 0.45 * p * p;
       var contain = Math.min(vw / s.w, vh / s.h);
       var cover = Math.max(vw / s.w, vh / s.h);
-      var s0 = contain * P.from, s1 = cover * P.to;
-      var sc = s0 * Math.pow(s1 / s0, pe);
-      var k = smooth(seg(p, 0, 0.7));
-      var tx = (1 - k) * (vw - sc * s.w) / 2 + k * (vw / 2 - sc * P.fx * s.w);
-      var ty = (1 - k) * (vh - sc * s.h) / 2 + k * (vh / 2 - sc * P.fy * s.h);
+      var sc, tx, ty;
+      if (P.pan) {
+        // siempre a pantalla completa: avanza un poco y se desliza por la fachada
+        var e = smooth(p);
+        sc = cover * (P.from + (P.to - P.from) * e);
+        var fx = P.fx0 + (P.fx - P.fx0) * e;
+        tx = vw / 2 - sc * fx * s.w;
+        ty = vh / 2 - sc * P.fy * s.h;
+      } else {
+        var s0 = contain * P.from, s1 = cover * P.to;
+        sc = s0 * Math.pow(s1 / s0, pe);
+        var k = smooth(seg(p, 0, 0.7));
+        tx = (1 - k) * (vw - sc * s.w) / 2 + k * (vw / 2 - sc * P.fx * s.w);
+        ty = (1 - k) * (vh - sc * s.h) / 2 + k * (vh / 2 - sc * P.fy * s.h);
+      }
       if (sc * s.w >= vw) tx = Math.min(0, Math.max(vw - sc * s.w, tx));
       if (sc * s.h >= vh) ty = Math.min(0, Math.max(vh - sc * s.h, ty));
       s.img.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0) scale(' + sc.toFixed(5) + ')';
@@ -252,14 +263,16 @@
       // 3. Interior (fragmentos del video) con un avance suave
       var cIn = smooth(seg(t, CLIP_START, CLIP_START + 0.9));
       var cOut = 1 - smooth(seg(t, CLIP_START + CLIP_LEN - 0.9, CLIP_START + CLIP_LEN));
-      clip.style.opacity = (cIn * cOut).toFixed(3);
+      var co = cIn * cOut;
+      clip.style.opacity = co.toFixed(3);
+      clip.style.visibility = co > 0 ? 'visible' : 'hidden';
       var cz = 1 + 0.12 * seg(t, CLIP_START, CLIP_START + CLIP_LEN);
       video.style.transform = 'scale(' + cz.toFixed(4) + ')';
 
       vig.style.opacity = seg(t, 4, 5.5).toFixed(3);
 
       // 4. Bienvenida, frase por frase sobre la sala
-      dim.style.opacity = (0.66 * smooth(seg(t, 21.4, 22.8))).toFixed(3);
+      dim.style.opacity = (0.5 * smooth(seg(t, 21.4, 22.8))).toFixed(3);
       cards.forEach(function (c) {
         var tin = +c.getAttribute('data-in'), tout = +c.getAttribute('data-out');
         c.classList.toggle('on', t >= tin && t < tout);

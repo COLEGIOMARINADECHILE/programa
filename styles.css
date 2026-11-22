@@ -23,6 +23,7 @@
   --color-shade-0: oklch(12% 0.045 262 / 0);
   --color-glass: oklch(14% 0.045 262 / 0.72);
   --color-night: oklch(9% 0.03 262);
+  --color-panel: oklch(14% 0.045 262 / 0.9);
 
   --font-display: "Mona Sans", ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-display);
@@ -96,6 +97,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--color-focus); o
   object-fit: cover;
   filter: blur(28px) brightness(0.4);
 }
+#shotFachada .shot__back { display: none; }
 .shot__img {
   position: absolute; left: 0; top: 0;
   max-width: none;
@@ -144,33 +146,47 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--color-focus); o
 
 /* Bienvenida dentro de la presentación: frase por frase, palabra por palabra */
 .cine__welcome {
-  position: absolute; inset: 0; z-index: 6;
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 6;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.25rem 1.25rem 6.5rem;
   pointer-events: none;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
+/* Panel oscuro para que el texto se lea sobre la foto */
 .card {
-  position: absolute; inset: 0;
+  position: absolute;
+  left: 50%; top: 46%;
+  width: min(100% - 2.5rem, 34rem);
   display: flex; flex-direction: column; justify-content: center; align-items: center;
-  gap: var(--space-sm);
-  padding: 2rem 1.75rem 7rem;
+  gap: 0.6rem;
+  padding: 2rem 1.5rem;
   text-align: center;
-  visibility: hidden;
+  background: var(--color-panel);
+  border: 1px solid var(--color-accent-2);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px -12px var(--color-night);
+  opacity: 0;
+  transform: translate(-50%, -46%) scale(0.96);
+  transition: opacity 0.8s ease, transform 0.9s var(--ease-out);
 }
-.card.on, .card.out { visibility: visible; }
-.card > p { max-width: 30rem; }
+.card.on { opacity: 1; transform: translate(-50%, -50%); }
+.card.out { opacity: 0; transform: translate(-50%, -56%); transition-duration: 0.7s; }
+.card > p { max-width: 100%; }
 .word {
   display: inline-block;
   opacity: 0;
-  transform: translateY(0.9em) scale(0.96);
-  transition: opacity 0.7s ease, transform 0.9s var(--ease-out);
+  transform: translateY(0.6em);
+  transition: opacity 0.6s ease, transform 0.8s var(--ease-out);
   transition-delay: var(--d, 0s);
 }
 .card.on .word { opacity: 1; transform: none; }
-.card.out .word { opacity: 0; transform: translateY(-0.6em); transition-duration: 0.6s; transition-delay: calc(var(--d, 0s) * 0.15); }
-.card__pre { font-size: var(--text-l); color: var(--color-ink-2); }
-.card__title { font-size: var(--text-display); font-weight: 300; font-stretch: 125%; line-height: 1.02; letter-spacing: -0.015em; }
-.card__gen { font-size: var(--text-display-s); font-weight: 300; font-stretch: 125%; color: var(--color-accent); line-height: 1.1; }
-.card__date { font-weight: 500; color: var(--color-ink-2); margin-top: var(--space-xs); }
-.card__text { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem); font-weight: 300; font-stretch: 112%; line-height: 1.35; }
+.card__pre { font-size: 1.25rem; font-weight: 500; color: var(--color-ink-2); }
+.card__title { font-size: clamp(2.6rem, 2rem + 4vw, 4.5rem); font-weight: 400; font-stretch: 112%; line-height: 1.05; color: var(--color-ink); }
+.card__gen { font-size: clamp(1.6rem, 1.3rem + 2vw, 2.5rem); font-weight: 500; color: var(--color-accent); line-height: 1.15; }
+.card__date { font-size: 1.125rem; font-weight: 500; color: var(--color-ink); margin-top: 0.25rem; padding-top: 0.75rem; border-top: 1px solid var(--color-rule-2); }
+.card__text { font-size: clamp(1.35rem, 1.15rem + 1vw, 1.85rem); font-weight: 500; line-height: 1.45; color: var(--color-ink); }
 .card__text .word:first-child { color: var(--color-accent); }
 
 .cine__dark { position: absolute; inset: 0; z-index: 7; background: var(--color-paper); opacity: 0; }
