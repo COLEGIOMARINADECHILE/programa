@@ -97,7 +97,6 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--color-focus); o
   object-fit: cover;
   filter: blur(28px) brightness(0.4);
 }
-#shotFachada .shot__back { display: none; }
 .shot__img {
   position: absolute; left: 0; top: 0;
   max-width: none;
@@ -140,8 +139,10 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--color-focus); o
 @keyframes sheen { to { transform: translateX(120%); } }
 
 /* Interior: fragmentos del video */
-.clip { position: absolute; inset: 0; z-index: 2; overflow: hidden; opacity: 0; background: var(--color-night); }
-.clip video { width: 100%; height: 100%; object-fit: cover; display: block; transform-origin: 50% 55%; will-change: transform; }
+.clip { position: absolute; inset: 0; z-index: 0; overflow: hidden; opacity: 0; background: var(--color-night); }
+#shotDron, #shotIn1, #shotIn2 { z-index: 2; }
+#shotDron .shot__back { display: none; }
+.clip video { width: 100%; height: 100%; object-fit: cover; object-position: 32% 50%; display: block; transform-origin: 50% 55%; will-change: transform; }
 #shotSala { z-index: 3; }
 
 /* Bienvenida dentro de la presentación: frase por frase, palabra por palabra */

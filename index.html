@@ -9,7 +9,7 @@
   <link rel="icon" href="img/logo.webp">
   <link rel="apple-touch-icon" href="img/logo.webp">
   <link rel="preload" as="image" href="img/logo.webp">
-  <link rel="preload" as="image" href="img/teatro-exterior.jpg">
+  <link rel="preload" as="image" href="img/dron.jpg">
   <link rel="preload" as="image" href="img/teatro-sala.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,15 +40,16 @@
   <div class="cine" id="cine">
     <div class="cine__white" id="cineWhite"></div>
 
-    <!-- 1. Fachada de día (foto) -->
-    <div class="shot" id="shotFachada" data-src="img/teatro-exterior.jpg" data-w="1400" data-h="788"></div>
-
-    <!-- 2. Interior de día: imágenes de respaldo con cámara y, encima, los fragmentos del video -->
-    <div class="shot" id="shotIn1" data-src="img/interior-1.jpg" data-w="1280" data-h="720"></div>
-    <div class="shot" id="shotIn2" data-src="img/interior-2.jpg" data-w="1280" data-h="720"></div>
+    <!-- 2. Interior de día: el video va al fondo y visible (iPhone solo lo reproduce si está a la vista);
+         encima, imágenes de respaldo que se apartan apenas el video empieza a avanzar -->
     <div class="clip" id="clip">
       <video id="clipVideo" src="img/interior.mp4" poster="img/interior-1.jpg" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture></video>
     </div>
+
+    <!-- respaldo: fachada desde el dron, pasillo y techo rojo -->
+    <div class="shot" id="shotDron" data-src="img/dron.jpg" data-w="1280" data-h="720"></div>
+    <div class="shot" id="shotIn1" data-src="img/interior-1.jpg" data-w="1280" data-h="720"></div>
+    <div class="shot" id="shotIn2" data-src="img/interior-2.jpg" data-w="1280" data-h="720"></div>
 
     <!-- 3. La sala completa donde se licenciarán (foto) -->
     <div class="shot" id="shotSala" data-src="img/teatro-sala.jpg" data-w="1000" data-h="1500"></div>
@@ -207,14 +208,15 @@
       return { el: el, img: img, w: w, h: h, p: P };
     }
     var shots = [
-      // fachada: llena la pantalla y la cámara recorre el edificio mientras se acerca un poco
-      makeShot('shotFachada', { t0: 3.6,  t1: 10.4, fin: 1.4, fout: 1.0, pan: true, from: 1.0, to: 1.12, fx0: 0.29, fx: 0.37, fy: 0.6 }),
-      // interior (respaldo si el teléfono no reproduce el video)
-      makeShot('shotIn1', { t0: 9.4,  t1: 13.6, fin: 0.9, fout: 0, pan: true, from: 1.0, to: 1.15, fx0: 0.5, fx: 0.5, fy: 0.5 }),
-      makeShot('shotIn2', { t0: 13.0, t1: 17.3, fin: 0.7, fout: 0.9, pan: true, from: 1.0, to: 1.15, fx0: 0.5, fx: 0.55, fy: 0.5 }),
-      makeShot('shotSala',   { t0: 15.9, t1: 42.5, fin: 1.0, fout: 0,   from: 1.0,  to: 1.45, fx: 0.5, fy: 0.56 })
+      // respaldo si el teléfono no reproduce el video: dron, pasillo y techo rojo
+      makeShot('shotDron', { t0: 3.6,  t1: 9.9,  fin: 1.2, fout: 0, pan: true, from: 1.0, to: 1.2, fx0: 0.3, fx: 0.34, fy: 0.5 }),
+      makeShot('shotIn1',  { t0: 9.1,  t1: 13.4, fin: 0.8, fout: 0, pan: true, from: 1.0, to: 1.15, fx0: 0.5, fx: 0.5, fy: 0.5 }),
+      makeShot('shotIn2',  { t0: 12.7, t1: 16.9, fin: 0.7, fout: 0.9, pan: true, from: 1.0, to: 1.15, fx0: 0.5, fx: 0.55, fy: 0.5 }),
+      // la sala completa donde se licenciarán
+      makeShot('shotSala', { t0: 15.9, t1: 42.5, fin: 1.0, fout: 0, from: 1.0, to: 1.45, fx: 0.5, fy: 0.56 })
     ];
-    var CLIP_START = 9.4, CLIP_LEN = 7.8;    // fragmentos del video
+    // video: el dron se acerca a la fachada, luego el pasillo y el techo rojo
+    var CLIP_START = 3.6, CLIP_LEN = 13.27;
     var TOTAL = 42.5;
 
     var clamp = function (v) { return Math.max(0, Math.min(1, v)); };
@@ -223,7 +225,7 @@
     var easeOut = function (x) { return 1 - Math.pow(1 - x, 3); };
     var easeIn = function (x) { return x * x * x; };
 
-    var start = 0, raf = 0, last = -1, videoStarted = false, videoLive = false;
+    var start = 0, raf = 0, last = -1, videoStarted = false, videoLive = false, liveAmt = 0;
     video.addEventListener('timeupdate', function () {
       if (videoStarted && !video.paused && video.currentTime > 0.15) videoLive = true;
     });
@@ -276,14 +278,18 @@
 
       // 2. Fachada (foto) y sala (foto) con cámara
       shots.forEach(function (s) { camera(s, t, vw, vh); });
+      // cuando el video ya avanza, las imágenes de respaldo se apartan y queda el video
+      liveAmt += ((videoLive ? 1 : 0) - liveAmt) * 0.12;
+      [shots[0], shots[1], shots[2]].forEach(function (s) {
+        s.el.style.opacity = (parseFloat(s.el.style.opacity || 0) * (1 - liveAmt)).toFixed(3);
+      });
 
       // 3. Interior (fragmentos del video) con un avance suave
       var cIn = smooth(seg(t, CLIP_START, CLIP_START + 0.9));
       var cOut = 1 - smooth(seg(t, CLIP_START + CLIP_LEN - 0.9, CLIP_START + CLIP_LEN));
-      // el video solo se muestra cuando de verdad está avanzando; si no, se ven las imágenes de debajo
-      var co = cIn * cOut * (videoLive ? 1 : 0);
-      clip.style.opacity = co.toFixed(3);
-      var cz = 1 + 0.12 * seg(t, CLIP_START, CLIP_START + CLIP_LEN);
+      // el video queda a la vista (debajo de todo) durante su tramo, para que el iPhone lo reproduzca
+      clip.style.opacity = (t >= CLIP_START - 0.6 && t <= CLIP_START + CLIP_LEN + 0.6) ? 1 : 0;
+      var cz = 1 + 0.05 * seg(t, CLIP_START, CLIP_START + CLIP_LEN);
       video.style.transform = 'scale(' + cz.toFixed(4) + ')';
 
       vig.style.opacity = seg(t, 4, 5.5).toFixed(3);
@@ -334,7 +340,7 @@
       root.classList.remove('is-done');
       root.classList.add('is-playing');
       window.scrollTo(0, 0);
-      start = 0; last = -1; videoStarted = false; videoLive = false;
+      start = 0; last = -1; videoStarted = false; videoLive = false; liveAmt = 0;
       render(0);
       raf = requestAnimationFrame(frame);
     }
