@@ -43,9 +43,12 @@
     <!-- 1. Fachada de día (foto) -->
     <div class="shot" id="shotFachada" data-src="img/teatro-exterior.jpg" data-w="1400" data-h="788"></div>
 
-    <!-- 2. Interior de día (fragmentos del video) -->
+    <!-- 2. Interior de día: imágenes de respaldo con cámara y, encima, los fragmentos del video -->
+    <div class="shot" id="shotIn1" data-src="img/interior-1.jpg" data-w="1280" data-h="720"></div>
+    <div class="shot" id="shotIn2" data-src="img/interior-2.jpg" data-w="1280" data-h="720"></div>
+    <div class="shot" id="shotIn3" data-src="img/interior-3.jpg" data-w="1280" data-h="720"></div>
     <div class="clip" id="clip">
-      <video id="clipVideo" src="img/interior.mp4" poster="img/interior-poster.jpg" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture></video>
+      <video id="clipVideo" src="img/interior.mp4" poster="img/interior-1.jpg" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture></video>
     </div>
 
     <!-- 3. La sala completa donde se licenciarán (foto) -->
@@ -62,7 +65,7 @@
         <p class="card__pre split">Bienvenidos a la</p>
         <p class="card__title split">Licenciatura</p>
         <p class="card__gen split">Generación 2026</p>
-        <p class="card__date split">Lunes 23 de noviembre, 10:30 horas</p>
+        <p class="card__date split">Lunes 23 de noviembre</p>
       </div>
       <div class="card" data-in="29.2" data-out="36.6">
         <p class="card__text split">Hoy despedimos a la generación 2026, en el año en que nuestro colegio cumple setenta años formando personas en Concepción.</p>
@@ -207,7 +210,11 @@
     var shots = [
       // fachada: llena la pantalla y la cámara recorre el edificio mientras se acerca un poco
       makeShot('shotFachada', { t0: 3.6,  t1: 10.4, fin: 1.4, fout: 1.0, pan: true, from: 1.0, to: 1.12, fx0: 0.29, fx: 0.37, fy: 0.6 }),
-      makeShot('shotSala',    { t0: 19.4, t1: 46.0, fin: 1.0, fout: 0,   from: 1.0,  to: 1.45, fx: 0.5, fy: 0.56 })
+      // interior (respaldo si el teléfono no reproduce el video)
+      makeShot('shotIn1', { t0: 9.4,  t1: 13.6, fin: 0.9, fout: 0, pan: true, from: 1.0, to: 1.15, fx0: 0.5, fx: 0.5, fy: 0.5 }),
+      makeShot('shotIn2', { t0: 13.0, t1: 17.2, fin: 0.7, fout: 0, pan: true, from: 1.0, to: 1.15, fx0: 0.5, fx: 0.5, fy: 0.5 }),
+      makeShot('shotIn3', { t0: 16.6, t1: 20.8, fin: 0.7, fout: 0.9, pan: true, from: 1.0, to: 1.15, fx0: 0.5, fx: 0.55, fy: 0.5 }),
+      makeShot('shotSala',   { t0: 19.4, t1: 46.0, fin: 1.0, fout: 0,   from: 1.0,  to: 1.45, fx: 0.5, fy: 0.56 })
     ];
     var CLIP_START = 9.4, CLIP_LEN = 11.3;   // fragmentos del video
     var TOTAL = 46.0;
@@ -218,7 +225,14 @@
     var easeOut = function (x) { return 1 - Math.pow(1 - x, 3); };
     var easeIn = function (x) { return x * x * x; };
 
-    var start = 0, raf = 0, last = -1, videoStarted = false;
+    var start = 0, raf = 0, last = -1, videoStarted = false, videoLive = false;
+    video.addEventListener('timeupdate', function () {
+      if (videoStarted && !video.paused && video.currentTime > 0.15) videoLive = true;
+    });
+    video.addEventListener('pause', function () { if (!video.ended) videoLive = false; });
+    video.addEventListener('error', function () { videoLive = false; });
+    // preparar el video desde el inicio para que esté listo al llegar al interior
+    try { video.load(); } catch (e) {}
 
     function camera(s, t, vw, vh) {
       var P = s.p;
@@ -268,9 +282,9 @@
       // 3. Interior (fragmentos del video) con un avance suave
       var cIn = smooth(seg(t, CLIP_START, CLIP_START + 0.9));
       var cOut = 1 - smooth(seg(t, CLIP_START + CLIP_LEN - 0.9, CLIP_START + CLIP_LEN));
-      var co = cIn * cOut;
+      // el video solo se muestra cuando de verdad está avanzando; si no, se ven las imágenes de debajo
+      var co = cIn * cOut * (videoLive ? 1 : 0);
       clip.style.opacity = co.toFixed(3);
-      clip.style.visibility = co > 0 ? 'visible' : 'hidden';
       var cz = 1 + 0.12 * seg(t, CLIP_START, CLIP_START + CLIP_LEN);
       video.style.transform = 'scale(' + cz.toFixed(4) + ')';
 
@@ -322,7 +336,7 @@
       root.classList.remove('is-done');
       root.classList.add('is-playing');
       window.scrollTo(0, 0);
-      start = 0; last = -1; videoStarted = false;
+      start = 0; last = -1; videoStarted = false; videoLive = false;
       render(0);
       raf = requestAnimationFrame(frame);
     }
