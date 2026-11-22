@@ -90,8 +90,6 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--color-focus); o
 .cine__white { position: absolute; inset: 0; background: var(--color-white); z-index: 4; }
 
 .shot { position: absolute; inset: 0; overflow: hidden; opacity: 0; z-index: 1; }
-.shot + .shot { z-index: 2; }
-.shot + .shot + .shot { z-index: 3; }
 .shot__back {
   position: absolute; inset: -10%;
   width: 120%; height: 120%; max-width: none;
@@ -139,24 +137,41 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--color-focus); o
 .cine__crest.is-shine::after { animation: sheen 1.5s ease-in-out both; }
 @keyframes sheen { to { transform: translateX(120%); } }
 
-/* Bienvenida dentro de la presentación */
+/* Interior: fragmentos del video */
+.clip { position: absolute; inset: 0; z-index: 2; overflow: hidden; opacity: 0; background: var(--color-night); }
+.clip video { width: 100%; height: 100%; object-fit: cover; display: block; transform-origin: 50% 55%; will-change: transform; }
+#shotSala { z-index: 3; }
+
+/* Bienvenida dentro de la presentación: frase por frase, palabra por palabra */
 .cine__welcome {
   position: absolute; inset: 0; z-index: 6;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  gap: var(--space-sm);
-  padding: 2rem 1.5rem 7rem;
-  text-align: center;
   pointer-events: none;
 }
-.w { opacity: 0; transform: translateY(1.25rem); transition: opacity 1.1s ease, transform 1.3s var(--ease-out); max-width: 34rem; }
-.w.on { opacity: 1; transform: none; }
-.w--pre { font-size: var(--text-l); color: var(--color-ink-2); }
-.w--title { font-size: var(--text-display); font-weight: 300; font-stretch: 125%; line-height: 1.02; letter-spacing: -0.015em; }
-.w--gen { font-size: var(--text-display-s); font-weight: 300; font-stretch: 125%; color: var(--color-accent); line-height: 1.1; }
-.w--date { font-weight: 500; color: var(--color-ink-2); }
-.w--rule { width: 4rem; height: 2px; background: var(--color-accent); margin: var(--space-sm) 0; transform: scaleX(0); transition: transform 1.2s var(--ease-out), opacity 0.6s ease; }
-.w--rule.on { transform: scaleX(1); }
-.w--text { font-size: var(--text-l); line-height: 1.5; color: var(--color-ink); }
+.card {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: var(--space-sm);
+  padding: 2rem 1.75rem 7rem;
+  text-align: center;
+  visibility: hidden;
+}
+.card.on, .card.out { visibility: visible; }
+.card > p { max-width: 30rem; }
+.word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.9em) scale(0.96);
+  transition: opacity 0.7s ease, transform 0.9s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.card.on .word { opacity: 1; transform: none; }
+.card.out .word { opacity: 0; transform: translateY(-0.6em); transition-duration: 0.6s; transition-delay: calc(var(--d, 0s) * 0.15); }
+.card__pre { font-size: var(--text-l); color: var(--color-ink-2); }
+.card__title { font-size: var(--text-display); font-weight: 300; font-stretch: 125%; line-height: 1.02; letter-spacing: -0.015em; }
+.card__gen { font-size: var(--text-display-s); font-weight: 300; font-stretch: 125%; color: var(--color-accent); line-height: 1.1; }
+.card__date { font-weight: 500; color: var(--color-ink-2); margin-top: var(--space-xs); }
+.card__text { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem); font-weight: 300; font-stretch: 112%; line-height: 1.35; }
+.card__text .word:first-child { color: var(--color-accent); }
 
 .cine__dark { position: absolute; inset: 0; z-index: 7; background: var(--color-paper); opacity: 0; }
 
@@ -208,7 +223,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--color-focus); o
   text-align: center;
 }
 .top__bg { position: absolute; inset: 0; z-index: -1; }
-.top__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; opacity: 0.55; }
+.top__bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
 .is-done .top__bg img { animation: drift 18s ease-out both; }
 @keyframes drift { from { transform: scale(1.35); } to { transform: scale(1.08); } }
 .top__bg::after {
@@ -291,6 +306,10 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--color-focus); o
 .step--key .step__icon { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-accent-ink); }
 .step--key .step__body { background: var(--color-accent-wash); box-shadow: inset 0 0 0 1px var(--color-accent-2); }
 .step--key .step__n { color: var(--color-accent); }
+
+.step--flag .step__icon svg { width: 2.2rem; height: 2.2rem; }
+.step--crest .step__icon { background: var(--color-white); border-color: var(--color-accent); padding: 2px; overflow: hidden; }
+.step--crest .step__icon img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
 
 .step--light .step__icon { border-color: var(--color-accent); color: var(--color-accent); }
 .step--light .step__icon::after {

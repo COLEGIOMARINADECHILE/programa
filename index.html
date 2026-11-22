@@ -9,9 +9,8 @@
   <link rel="icon" href="img/logo.webp">
   <link rel="apple-touch-icon" href="img/logo.webp">
   <link rel="preload" as="image" href="img/logo.webp">
-  <link rel="preload" as="image" href="img/video-fachada.jpg">
-  <link rel="preload" as="image" href="img/video-entrada.jpg">
-  <link rel="preload" as="image" href="img/video-sala.jpg">
+  <link rel="preload" as="image" href="img/teatro-exterior.jpg">
+  <link rel="preload" as="image" href="img/teatro-sala.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100,400;100,500;100,600;125,300;125,400&display=swap" rel="stylesheet">
@@ -24,40 +23,53 @@
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3.128a4 4 0 0 1 0 7.744M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></g></symbol>
-      <symbol id="i-flag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"/></symbol>
+      <!-- Bandera de Chile en línea, sin colores -->
+      <symbol id="i-chile" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="1"/><path d="M2 12h20M9.5 5v7"/></g><path fill="currentColor" transform="translate(5.75 8.5) scale(1.3) translate(-5.75 -8.5)" d="M5.75 6.4L6.25 7.81L7.75 7.85L6.56 8.76L6.98 10.2L5.75 9.35L4.52 10.2L4.94 8.76L3.75 7.85L5.25 7.81Z"/></symbol>
       <symbol id="i-mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M12 19v3m7-12v2a7 7 0 0 1-14 0v-2"/><rect width="6" height="13" x="9" y="2" rx="3"/></g></symbol>
       <symbol id="i-cap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0zM22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></g></symbol>
       <symbol id="i-music" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></g></symbol>
       <symbol id="i-video" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="m12.296 3.464l3.02 3.956M20.2 6L3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3zM3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm3.18-5.724l3.1 3.899"/></symbol>
       <symbol id="i-vocal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="m11 7.601l-5.994 8.19a1 1 0 0 0 .1 1.298l.817.818a1 1 0 0 0 1.314.087L15.09 12"/><path d="M16.5 21.174C15.5 20.5 14.372 20 13 20c-2.058 0-3.928 2.356-6 2s-2.775-3.369-1.5-4.5"/><circle cx="16" cy="7" r="5"/></g></symbol>
       <symbol id="i-trophy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M10 14.66V17a1 1 0 0 1-1 1a2 2 0 0 0-2 2v2m7-7.34V17a1 1 0 0 0 1 1a2 2 0 0 1 2 2v2m.916-12H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3M4 22h16"/><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"/><path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3"/></g></symbol>
-      <symbol id="i-anchor" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M12 6v16m7-9l2-1a9 9 0 0 1-18 0l2 1m4-2h6"/><circle cx="12" cy="4" r="2"/></g></symbol>
       <symbol id="i-flame" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0a5 5 0 0 1 1-3a1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></symbol>
       <symbol id="i-hand" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2m0 4V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2m0 4.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></g></symbol>
     </defs>
   </svg>
 
   <!-- ================= PRESENTACIÓN AUTOMÁTICA ================= -->
-  <div class="cine" id="cine" aria-live="polite">
+  <div class="cine" id="cine">
     <div class="cine__white" id="cineWhite"></div>
 
-    <div class="shot" data-src="img/video-fachada.jpg" data-w="1280" data-h="720"></div>
-    <div class="shot" data-src="img/video-entrada.jpg" data-w="1280" data-h="720"></div>
-    <div class="shot" data-src="img/video-sala.jpg" data-w="1280" data-h="720"></div>
+    <!-- 1. Fachada de día (foto) -->
+    <div class="shot" id="shotFachada" data-src="img/teatro-exterior.jpg" data-w="1400" data-h="788"></div>
+
+    <!-- 2. Interior de día (fragmentos del video) -->
+    <div class="clip" id="clip">
+      <video id="clipVideo" src="img/interior.mp4" poster="img/interior-poster.jpg" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture></video>
+    </div>
+
+    <!-- 3. La sala completa donde se licenciarán (foto) -->
+    <div class="shot" id="shotSala" data-src="img/teatro-sala.jpg" data-w="1000" data-h="1500"></div>
 
     <div class="cine__vignette" id="cineVig"></div>
     <div class="cine__dim" id="cineDim"></div>
 
     <div class="cine__crest" id="cineCrest"><img src="img/logo.webp" alt=""></div>
 
+    <!-- 4. Bienvenida, frase por frase -->
     <div class="cine__welcome">
-      <p class="w w--pre" data-at="21.4">Bienvenidos a la</p>
-      <p class="w w--title" data-at="22.0">Licenciatura</p>
-      <p class="w w--gen" data-at="22.7">Generación 2026</p>
-      <p class="w w--date" data-at="23.3">Lunes 23 de noviembre, 10:30 horas</p>
-      <div class="w w--rule" data-at="24.4"></div>
-      <p class="w w--text" data-at="25.0">Hoy despedimos a la generación 2026, en el año en que nuestro colegio cumple setenta años formando personas en Concepción.</p>
-      <p class="w w--text" data-at="29.0">Los recibimos con orgullo y gratitud, junto a sus familias y profesores, para celebrar el camino recorrido y el rumbo que comienza.</p>
+      <div class="card" data-in="22.6" data-out="28.8">
+        <p class="card__pre split">Bienvenidos a la</p>
+        <p class="card__title split">Licenciatura</p>
+        <p class="card__gen split">Generación 2026</p>
+        <p class="card__date split">Lunes 23 de noviembre, 10:30 horas</p>
+      </div>
+      <div class="card" data-in="29.2" data-out="36.6">
+        <p class="card__text split">Hoy despedimos a la generación 2026, en el año en que nuestro colegio cumple setenta años formando personas en Concepción.</p>
+      </div>
+      <div class="card" data-in="37.0" data-out="44.6">
+        <p class="card__text split">Los recibimos con orgullo y gratitud, junto a sus familias y profesores, para celebrar el camino recorrido y el rumbo que comienza.</p>
+      </div>
     </div>
 
     <div class="cine__dark" id="cineDark"></div>
@@ -67,7 +79,7 @@
 
   <!-- ================= PÁGINA ================= -->
   <header class="top" id="inicio">
-    <div class="top__bg" aria-hidden="true"><img src="img/video-sala.jpg" alt=""></div>
+    <div class="top__bg" aria-hidden="true"><img src="img/teatro-sala.jpg" alt=""></div>
     <div class="top__inner">
       <div class="crest crest--top enter" style="--i:0"><img src="img/logo.webp" alt="Insignia del Colegio Marina de Chile, 70 años, Concepción 1956" width="1830" height="1774"></div>
       <h1 class="top__title">
@@ -92,7 +104,7 @@
 
         <ol class="steps">
           <li class="step reveal"><span class="step__icon"><svg><use href="#i-users"/></svg></span><span class="step__body"><span class="step__n">1</span><span class="step__t">Entrada estudiantes generación 2026</span></span></li>
-          <li class="step reveal"><span class="step__icon"><svg><use href="#i-flag"/></svg></span><span class="step__body"><span class="step__n">2</span><span class="step__t">Himno Nacional</span></span></li>
+          <li class="step step--flag reveal"><span class="step__icon"><svg><use href="#i-chile"/></svg></span><span class="step__body"><span class="step__n">2</span><span class="step__t">Himno Nacional</span></span></li>
           <li class="step reveal"><span class="step__icon"><svg><use href="#i-mic"/></svg></span><span class="step__body"><span class="step__n">3</span><span class="step__t">Palabras de la Directora</span></span></li>
           <li class="step step--key reveal"><span class="step__icon"><svg><use href="#i-cap"/></svg></span><span class="step__body"><span class="step__n">4</span><span class="step__t">Entrega de licencias</span><span class="step__course">4° Medio A</span></span></li>
           <li class="step reveal"><span class="step__icon"><svg><use href="#i-music"/></svg></span><span class="step__body"><span class="step__n">5</span><span class="step__t">Número artístico</span></span></li>
@@ -101,7 +113,7 @@
           <li class="step step--key reveal"><span class="step__icon"><svg><use href="#i-cap"/></svg></span><span class="step__body"><span class="step__n">8</span><span class="step__t">Entrega de licencias</span><span class="step__course">4° Medio C</span></span></li>
           <li class="step reveal"><span class="step__icon"><svg><use href="#i-vocal"/></svg></span><span class="step__body"><span class="step__n">9</span><span class="step__t">Palabras estudiante generación 2026</span></span></li>
           <li class="step reveal"><span class="step__icon"><svg><use href="#i-trophy"/></svg></span><span class="step__body"><span class="step__n">10</span><span class="step__t">Premiación estudiantes destacados</span></span></li>
-          <li class="step reveal"><span class="step__icon"><svg><use href="#i-anchor"/></svg></span><span class="step__body"><span class="step__n">11</span><span class="step__t">Himno del colegio</span></span></li>
+          <li class="step step--crest reveal"><span class="step__icon"><img src="img/logo.webp" alt="" width="1830" height="1774"></span><span class="step__body"><span class="step__n">11</span><span class="step__t">Himno del colegio</span></span></li>
           <li class="step step--light reveal"><span class="step__icon"><svg><use href="#i-flame"/></svg></span><span class="step__body"><span class="step__n">12</span><span class="step__t">Ceremonia de la Luz</span></span></li>
           <li class="step reveal"><span class="step__icon"><svg><use href="#i-hand"/></svg></span><span class="step__body"><span class="step__n">13</span><span class="step__t">Canción del adiós</span></span></li>
         </ol>
@@ -109,7 +121,7 @@
     </section>
 
     <section class="farewell" id="despedida" aria-labelledby="cierre">
-      <div class="farewell__bg" aria-hidden="true"><img src="img/video-entrada.jpg" alt=""></div>
+      <div class="farewell__bg" aria-hidden="true"><img src="img/teatro-hall.jpg" alt=""></div>
       <div class="farewell__glow" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
       <div class="wrap farewell__inner reveal">
         <h2 id="cierre">Hasta siempre, generación 2026</h2>
@@ -145,34 +157,54 @@
       rev.forEach(function (el) { el.classList.add('is-in'); });
     }
 
-    // ---------- Presentación con cámara ----------
+    // ---------- Palabras que aparecen una a una ----------
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.cine__welcome .card'));
+    cards.forEach(function (card) {
+      var n = 0;
+      card.querySelectorAll('.split').forEach(function (line) {
+        var words = line.textContent.trim().split(/\s+/);
+        line.textContent = '';
+        words.forEach(function (w, i) {
+          var s = document.createElement('span');
+          s.className = 'word';
+          s.textContent = w;
+          s.style.setProperty('--d', (n * 0.16).toFixed(2) + 's');
+          line.appendChild(s);
+          if (i < words.length - 1) line.appendChild(document.createTextNode(' '));
+          n++;
+        });
+      });
+    });
+
+    // ---------- Presentación ----------
     var white = document.getElementById('cineWhite');
     var crest = document.getElementById('cineCrest');
     var vig = document.getElementById('cineVig');
     var dim = document.getElementById('cineDim');
     var dark = document.getElementById('cineDark');
     var bar = document.getElementById('cineBar');
+    var clip = document.getElementById('clip');
+    var video = document.getElementById('clipVideo');
     var skip = document.getElementById('skip');
     var replay = document.getElementById('replay');
-    var words = Array.prototype.slice.call(document.querySelectorAll('.cine__welcome .w'));
 
-    // Cada toma: cuándo empieza y termina (segundos), desde qué distancia parte,
-    // cuánto se acerca y hacia qué punto de la imagen avanza la cámara.
-    var plan = [
-      { t0: 3.6,  t1: 10.6, fin: 1.4, fout: 1.1, from: 0.34, to: 2.2, fx: 0.52, fy: 0.36 }, // fachada desde el aire
-      { t0: 9.5,  t1: 16.2, fin: 1.1, fout: 1.1, from: 1.0,  to: 2.0, fx: 0.5,  fy: 0.8  }, // la entrada
-      { t0: 15.1, t1: 34.6, fin: 1.1, fout: 0,   from: 1.0,  to: 2.3, fx: 0.6,  fy: 0.56 }  // la sala y el escenario
-    ];
-    var TOTAL = 35.4;
-
-    var shots = Array.prototype.slice.call(document.querySelectorAll('.shot')).map(function (el, i) {
+    // Fotos con movimiento de cámara: cuándo entran y salen (segundos), desde qué distancia
+    // parten, cuánto se acercan y hacia qué punto avanzan.
+    function makeShot(id, P) {
+      var el = document.getElementById(id);
       var w = +el.getAttribute('data-w'), h = +el.getAttribute('data-h'), src = el.getAttribute('data-src');
       var back = new Image(); back.src = src; back.alt = ''; back.className = 'shot__back';
       var img = new Image(); img.src = src; img.alt = ''; img.className = 'shot__img';
       img.style.width = w + 'px'; img.style.height = h + 'px';
       el.appendChild(back); el.appendChild(img);
-      return { el: el, img: img, w: w, h: h, p: plan[i] };
-    });
+      return { el: el, img: img, w: w, h: h, p: P };
+    }
+    var shots = [
+      makeShot('shotFachada', { t0: 3.6,  t1: 10.4, fin: 1.4, fout: 1.0, from: 0.34, to: 2.1, fx: 0.62, fy: 0.84 }),
+      makeShot('shotSala',    { t0: 19.4, t1: 46.0, fin: 1.0, fout: 0,   from: 1.0,  to: 1.45, fx: 0.5, fy: 0.56 })
+    ];
+    var CLIP_START = 9.4, CLIP_LEN = 11.3;   // fragmentos del video
+    var TOTAL = 46.0;
 
     var clamp = function (v) { return Math.max(0, Math.min(1, v)); };
     var seg = function (t, a, b) { return clamp((t - a) / (b - a)); };
@@ -180,12 +212,32 @@
     var easeOut = function (x) { return 1 - Math.pow(1 - x, 3); };
     var easeIn = function (x) { return x * x * x; };
 
-    var start = 0, raf = 0, last = -1;
+    var start = 0, raf = 0, last = -1, videoStarted = false;
+
+    function camera(s, t, vw, vh) {
+      var P = s.p;
+      if (t < P.t0 - 0.05 || t > P.t1 + 0.05) { s.el.style.opacity = 0; return; }
+      var p = seg(t, P.t0, P.t1);
+      var pe = 0.55 * p + 0.45 * p * p;
+      var contain = Math.min(vw / s.w, vh / s.h);
+      var cover = Math.max(vw / s.w, vh / s.h);
+      var s0 = contain * P.from, s1 = cover * P.to;
+      var sc = s0 * Math.pow(s1 / s0, pe);
+      var k = smooth(seg(p, 0, 0.7));
+      var tx = (1 - k) * (vw - sc * s.w) / 2 + k * (vw / 2 - sc * P.fx * s.w);
+      var ty = (1 - k) * (vh - sc * s.h) / 2 + k * (vh / 2 - sc * P.fy * s.h);
+      if (sc * s.w >= vw) tx = Math.min(0, Math.max(vw - sc * s.w, tx));
+      if (sc * s.h >= vh) ty = Math.min(0, Math.max(vh - sc * s.h, ty));
+      s.img.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0) scale(' + sc.toFixed(5) + ')';
+      var o = smooth(seg(t, P.t0, P.t0 + P.fin));
+      if (P.fout) o *= 1 - smooth(seg(t, P.t1 - P.fout, P.t1));
+      s.el.style.opacity = o.toFixed(3);
+    }
 
     function render(t) {
       var vw = window.innerWidth, vh = window.innerHeight;
 
-      // 1. El logo aparece sobre blanco y luego se aleja en la distancia
+      // 1. El logo aparece sobre blanco y se aleja en la distancia
       var appear = easeOut(seg(t, 0.2, 1.8));
       var away = easeIn(seg(t, 3.0, 5.4));
       var cs = (0.82 + 0.18 * appear) * (1 - 0.96 * away);
@@ -194,35 +246,36 @@
       crest.classList.toggle('is-shine', t > 1.6 && t < 3.4);
       white.style.opacity = (1 - smooth(seg(t, 3.0, 4.6))).toFixed(3);
 
-      // 2. La cámara llega al teatro, a la entrada y a la sala
-      shots.forEach(function (s) {
-        var P = s.p;
-        if (t < P.t0 - 0.05 || t > P.t1 + 0.05) { s.el.style.opacity = 0; return; }
-        var p = seg(t, P.t0, P.t1);
-        var pe = 0.55 * p + 0.45 * p * p;
-        var contain = Math.min(vw / s.w, vh / s.h);
-        var cover = Math.max(vw / s.w, vh / s.h);
-        var s0 = contain * P.from, s1 = cover * P.to;
-        var sc = s0 * Math.pow(s1 / s0, pe);
-        var k = smooth(seg(p, 0, 0.7));
-        var tx = (1 - k) * (vw - sc * s.w) / 2 + k * (vw / 2 - sc * P.fx * s.w);
-        var ty = (1 - k) * (vh - sc * s.h) / 2 + k * (vh / 2 - sc * P.fy * s.h);
-        if (sc * s.w >= vw) tx = Math.min(0, Math.max(vw - sc * s.w, tx));
-        if (sc * s.h >= vh) ty = Math.min(0, Math.max(vh - sc * s.h, ty));
-        s.img.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0) scale(' + sc.toFixed(5) + ')';
-        var o = smooth(seg(t, P.t0, P.t0 + P.fin));
-        if (P.fout) o *= 1 - smooth(seg(t, P.t1 - P.fout, P.t1));
-        s.el.style.opacity = o.toFixed(3);
-      });
+      // 2. Fachada (foto) y sala (foto) con cámara
+      shots.forEach(function (s) { camera(s, t, vw, vh); });
+
+      // 3. Interior (fragmentos del video) con un avance suave
+      var cIn = smooth(seg(t, CLIP_START, CLIP_START + 0.9));
+      var cOut = 1 - smooth(seg(t, CLIP_START + CLIP_LEN - 0.9, CLIP_START + CLIP_LEN));
+      clip.style.opacity = (cIn * cOut).toFixed(3);
+      var cz = 1 + 0.12 * seg(t, CLIP_START, CLIP_START + CLIP_LEN);
+      video.style.transform = 'scale(' + cz.toFixed(4) + ')';
+
       vig.style.opacity = seg(t, 4, 5.5).toFixed(3);
 
-      // 3. Bienvenida sobre la sala
-      dim.style.opacity = (0.72 * smooth(seg(t, 20.2, 21.6))).toFixed(3);
-      words.forEach(function (w) { w.classList.toggle('on', t >= +w.getAttribute('data-at')); });
+      // 4. Bienvenida, frase por frase sobre la sala
+      dim.style.opacity = (0.66 * smooth(seg(t, 21.4, 22.8))).toFixed(3);
+      cards.forEach(function (c) {
+        var tin = +c.getAttribute('data-in'), tout = +c.getAttribute('data-out');
+        c.classList.toggle('on', t >= tin && t < tout);
+        c.classList.toggle('out', t >= tout);
+      });
 
-      // 4. Fundido final hacia el programa
-      dark.style.opacity = smooth(seg(t, 34.2, 35.2)).toFixed(3);
+      // 5. Fundido hacia el programa
+      dark.style.opacity = smooth(seg(t, 44.9, 45.9)).toFixed(3);
       bar.style.transform = 'scaleX(' + clamp(t / TOTAL).toFixed(4) + ')';
+    }
+
+    function startVideo() {
+      videoStarted = true;
+      try { video.currentTime = 0; } catch (e) {}
+      var p = video.play();
+      if (p && p.catch) p.catch(function () { /* sin reproducción automática: queda la imagen del interior */ });
     }
 
     function frame(now) {
@@ -231,6 +284,7 @@
       // si el teléfono pausa la página, se retoma donde iba
       if (last >= 0 && t - last > 0.5) { start += (t - last - 0.016) * 1000; t = last + 0.016; }
       last = t;
+      if (!videoStarted && t >= CLIP_START - 0.3) startVideo();
       render(t);
       if (t >= TOTAL) { finish(); return; }
       raf = requestAnimationFrame(frame);
@@ -238,6 +292,7 @@
 
     function finish() {
       cancelAnimationFrame(raf);
+      try { video.pause(); } catch (e) {}
       root.classList.remove('is-playing');
       root.classList.add('is-done');
       window.scrollTo(0, 0);
@@ -245,13 +300,19 @@
 
     function play() {
       cancelAnimationFrame(raf);
+      try { video.pause(); video.currentTime = 0; } catch (e) {}
       root.classList.remove('is-done');
       root.classList.add('is-playing');
       window.scrollTo(0, 0);
-      start = 0; last = -1;
+      start = 0; last = -1; videoStarted = false;
       render(0);
       raf = requestAnimationFrame(frame);
     }
+
+    document.addEventListener('visibilitychange', function () {
+      if (!root.classList.contains('is-playing') || !videoStarted) return;
+      if (document.hidden) { video.pause(); } else if (last < CLIP_START + CLIP_LEN) { video.play().catch(function () {}); }
+    });
 
     // Para revisar un instante exacto: cineAt(segundos)
     window.cineAt = function (t) { cancelAnimationFrame(raf); render(t); };
