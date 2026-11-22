@@ -46,7 +46,6 @@
     <!-- 2. Interior de día: imágenes de respaldo con cámara y, encima, los fragmentos del video -->
     <div class="shot" id="shotIn1" data-src="img/interior-1.jpg" data-w="1280" data-h="720"></div>
     <div class="shot" id="shotIn2" data-src="img/interior-2.jpg" data-w="1280" data-h="720"></div>
-    <div class="shot" id="shotIn3" data-src="img/interior-3.jpg" data-w="1280" data-h="720"></div>
     <div class="clip" id="clip">
       <video id="clipVideo" src="img/interior.mp4" poster="img/interior-1.jpg" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture></video>
     </div>
@@ -61,16 +60,16 @@
 
     <!-- 4. Bienvenida, frase por frase -->
     <div class="cine__welcome">
-      <div class="card" data-in="22.6" data-out="28.8">
+      <div class="card" data-in="19.1" data-out="25.3">
         <p class="card__pre split">Bienvenidos a la</p>
         <p class="card__title split">Licenciatura</p>
         <p class="card__gen split">Generación 2026</p>
         <p class="card__date split">Lunes 23 de noviembre</p>
       </div>
-      <div class="card" data-in="29.2" data-out="36.6">
+      <div class="card" data-in="25.7" data-out="33.1">
         <p class="card__text split">Hoy despedimos a la generación 2026, en el año en que nuestro colegio cumple setenta años formando personas en Concepción.</p>
       </div>
-      <div class="card" data-in="37.0" data-out="44.6">
+      <div class="card" data-in="33.5" data-out="41.1">
         <p class="card__text split">Los recibimos con orgullo y gratitud, junto a sus familias y profesores, para celebrar el camino recorrido y el rumbo que comienza.</p>
       </div>
     </div>
@@ -212,12 +211,11 @@
       makeShot('shotFachada', { t0: 3.6,  t1: 10.4, fin: 1.4, fout: 1.0, pan: true, from: 1.0, to: 1.12, fx0: 0.29, fx: 0.37, fy: 0.6 }),
       // interior (respaldo si el teléfono no reproduce el video)
       makeShot('shotIn1', { t0: 9.4,  t1: 13.6, fin: 0.9, fout: 0, pan: true, from: 1.0, to: 1.15, fx0: 0.5, fx: 0.5, fy: 0.5 }),
-      makeShot('shotIn2', { t0: 13.0, t1: 17.2, fin: 0.7, fout: 0, pan: true, from: 1.0, to: 1.15, fx0: 0.5, fx: 0.5, fy: 0.5 }),
-      makeShot('shotIn3', { t0: 16.6, t1: 20.8, fin: 0.7, fout: 0.9, pan: true, from: 1.0, to: 1.15, fx0: 0.5, fx: 0.55, fy: 0.5 }),
-      makeShot('shotSala',   { t0: 19.4, t1: 46.0, fin: 1.0, fout: 0,   from: 1.0,  to: 1.45, fx: 0.5, fy: 0.56 })
+      makeShot('shotIn2', { t0: 13.0, t1: 17.3, fin: 0.7, fout: 0.9, pan: true, from: 1.0, to: 1.15, fx0: 0.5, fx: 0.55, fy: 0.5 }),
+      makeShot('shotSala',   { t0: 15.9, t1: 42.5, fin: 1.0, fout: 0,   from: 1.0,  to: 1.45, fx: 0.5, fy: 0.56 })
     ];
-    var CLIP_START = 9.4, CLIP_LEN = 11.3;   // fragmentos del video
-    var TOTAL = 46.0;
+    var CLIP_START = 9.4, CLIP_LEN = 7.8;    // fragmentos del video
+    var TOTAL = 42.5;
 
     var clamp = function (v) { return Math.max(0, Math.min(1, v)); };
     var seg = function (t, a, b) { return clamp((t - a) / (b - a)); };
@@ -291,7 +289,7 @@
       vig.style.opacity = seg(t, 4, 5.5).toFixed(3);
 
       // 4. Bienvenida, frase por frase sobre la sala
-      dim.style.opacity = (0.5 * smooth(seg(t, 21.4, 22.8))).toFixed(3);
+      dim.style.opacity = (0.5 * smooth(seg(t, 17.9, 19.3))).toFixed(3);
       cards.forEach(function (c) {
         var tin = +c.getAttribute('data-in'), tout = +c.getAttribute('data-out');
         c.classList.toggle('on', t >= tin && t < tout);
@@ -299,7 +297,7 @@
       });
 
       // 5. Fundido hacia el programa
-      dark.style.opacity = smooth(seg(t, 44.9, 45.9)).toFixed(3);
+      dark.style.opacity = smooth(seg(t, 41.4, 42.4)).toFixed(3);
       bar.style.transform = 'scaleX(' + clamp(t / TOTAL).toFixed(4) + ')';
     }
 
